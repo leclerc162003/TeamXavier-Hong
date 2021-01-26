@@ -1,12 +1,43 @@
-#gacha {
-    display: flex;
-    justify-content:space-between;
-    width: 60%;
-    padding: 20%;
+body {
+    background-color: rgb(44, 44, 44);
 }
 
-img {
+#gacha {
+    display: flex;
+    justify-content:space-around;
+    position: fixed;
+    min-width: 1120px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.gacha {
+    border-radius: 10px;
+    background-color: white;
+    width: 110px;
+    height: 300px;
+    position: relative;
+}
+
+.gachaimg {
     object-fit: cover;
-    width: 100px;
-    height:200px;
+    border-radius: 10px;
+    width: 110px;
+    height: 200px;
+}
+
+.gacha > p {
+    position: relative;
+    text-align: center !important;
+    bottom: 0px;
+}
+
+@media only screen and (max-width: 1250px){
+    #gacha {
+        height: 605px;
+        min-width: 560px;
+        width: 50%;
+        flex-wrap: wrap;
+    }
 }
