@@ -38,18 +38,26 @@ function main() {
 
     function CharacterRoll(a) {
         var r = CharacterStarRoll();
-        return a[r][Math.floor(Math.random()*a[r].length)];
+        return [`${a[r][Math.floor(Math.random()*a[r].length)]}`,`${r}`];
     }
 
     function WeaponRoll(a) {
         var r = WeaponStarRoll();
-        return a[r][Math.floor(Math.random()*a[r].length)];
+        return [`${a[r][Math.floor(Math.random()*a[r].length)]}`,`${r}`];
     }
 
     function CharacterRollx10(a) {
+        $('#gacha').html(''); // Reset the gacha
         for (let i = 0; i < 10; i++) {
-            var roll = CharacterRoll(a);
-            $(`#roll${i}`).html(`<img src="./Gacha/${roll}.png" alt="${roll}"> `);
+            var temproll = CharacterRoll(a);
+            var roll = temproll[0];
+            var star = temproll[1];
+            console.log(star);
+            if (star == 2) {
+                $('#gacha').append(`<div id="roll${i}" class="gacha"><img src="./Gacha/${roll}.png" alt="${roll}"></div>`);
+            } else {
+                $('#gacha').prepend(`<div id="roll${i}" class="gacha"><img src="./Gacha/${roll}.png" alt="${roll}"></div>`);
+            }
         }
     }
 
