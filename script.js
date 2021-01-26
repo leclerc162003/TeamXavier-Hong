@@ -10,29 +10,41 @@ function main() {
     var CharacterArray = [Star5CharacterArray, Star4CharacterArray, Star3WeaponArray];
     var WeaponArray = [Star5WeaponArray, Star4WeaponArray, Star3WeaponArray];
 
-    function characterroll() {
+    function CharacterStarRoll() {
         var roll = Math.floor(Math.random() * 1000);
         var star = 3;
         if (roll < 6) {
             star = 0;
         } else if (roll < 57) {
-            star = 2;
-        } else {
             star = 1;
+        } else {
+            star = 2;
         }
         return star;
     }
     
-    function weaponroll() {
+    function WeaponStarRoll() {
         var roll= Math.floor(Math.random() * 1000);
         var star = 3;
         if (roll < 7) {
             star = 0;
         } else if (roll < 67) {
-            star = 2;
-        } else {
             star = 1;
+        } else {
+            star = 2;
         }
         return star;
     }
+
+    function CharacterRoll(a) {
+        var r = CharacterStarRoll();
+        return a[r][Math.floor(Math.random()*a[r].length)];
+    }
+
+    function WeaponRoll(a) {
+        var r = WeaponStarRoll();
+        return a[r][Math.floor(Math.random()*a[r].length)];
+    }
+
+    
 }
