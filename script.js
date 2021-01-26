@@ -12,25 +12,27 @@ function main() {
 
     function characterroll() {
         var roll = Math.floor(Math.random() * 1000);
-        var star = 0;
+        var star = 3;
         if (roll < 6) {
-            star = 5;
+            star = 0;
         } else if (roll < 57) {
-            star = 4;
+            star = 2;
         } else {
-            star = 3;
+            star = 1;
         }
+        return star;
     }
     
     function weaponroll() {
         var roll= Math.floor(Math.random() * 1000);
-        var star = 0;
+        var star = 3;
         if (roll < 7) {
-            star = 5;
+            star = 0;
         } else if (roll < 67) {
-            star = 4;
+            star = 2;
         } else {
-            star = 3;
+            star = 1;
         }
+        return star;
     }
 }
