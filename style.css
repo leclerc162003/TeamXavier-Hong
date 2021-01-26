@@ -1,0 +1,12 @@
+#gacha {
+    display: flex;
+    justify-content:space-between;
+    width: 60%;
+    padding: 20%;
+}
+
+img {
+    object-fit: cover;
+    width: 100px;
+    height:200px;
+}
