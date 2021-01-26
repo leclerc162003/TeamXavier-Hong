@@ -46,5 +46,12 @@ function main() {
         return a[r][Math.floor(Math.random()*a[r].length)];
     }
 
-    
+    function CharacterRollx10(a) {
+        for (let i = 0; i < 10; i++) {
+            var roll = CharacterRoll(a);
+            $(`#roll${i}`).html(`<img src="./Gacha/${roll}.png" alt="${roll}" width="200" height="600"> `);
+        }
+    }
+
+    CharacterRollx10(CharacterArray);
 }
