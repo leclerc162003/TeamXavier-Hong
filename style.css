@@ -12,7 +12,7 @@ body {
     color: white;
 }
 
-.center {
+.center {       /* This class is used to center div */
     position: absolute;
     top: 50%;
     left: 50%;
@@ -74,6 +74,16 @@ form a:hover {
 .btn:disabled {
     background-color:rgb(221, 197, 137);
     color:white;
+}
+
+#main {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+#main-username {
+    color:rgb(221, 197, 137);
 }
 
 #gacha {
