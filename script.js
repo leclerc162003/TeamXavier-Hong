@@ -70,7 +70,6 @@ function WeaponRollx10(a) {
         var roll = temproll[0];     // Name of the png image of item
         var star = temproll[1];     // No. of star the item has
         var name = temproll[2];     // Name of the item with spacing
-        console.log(star);
         if (star == 2) {
             $('#gacha').append(`<div id="roll${i}" class="gacha"><img src="./Gacha/${roll}.png" alt="${roll}" class="gachaimg"><p>${name}</p></div>`);
         } else {
