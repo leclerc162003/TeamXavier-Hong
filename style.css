@@ -33,8 +33,16 @@ body {
     padding-right: 150px;
 }
 
-form h3 {
+form h2, form h3, form a {
     color:rgb(221, 197, 137);
+}
+
+form a {
+    text-decoration: underline;
+}
+
+form a:hover {
+    cursor: pointer;
 }
 
 .btn {
