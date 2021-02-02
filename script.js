@@ -107,8 +107,41 @@ $("#signup-submit").on("click", function(e) {
     }
     
     $.ajax(settings).done(function (response) {
-      console.log(response);
+        console.log(response);
     });
     
     $("form")[1].reset();   // Reset form contents after submitting
-})
+});
+
+$("#login-submit").on("click", function(e) {
+    e.preventDefault(); // Prevent submit button from removing values before retrieving
+
+    var settings = {
+        "async": true,
+        "crossDomain": true,
+        "url": "https://genshingachasim-d09b.restdb.io/rest/profile",
+        "method": "GET",
+        "headers": {
+            "content-type": "application/json",
+            "x-apikey": APIKEY,
+            "cache-control": "no-cache"
+        }
+    }
+      
+    $.ajax(settings).done(function (response) {
+
+        for (var i = 0; i < response.length; i++) {
+            if (response[i].name == $("#login-username").val())   // Check is username matches database
+            {
+                if (response[i].password == $("#login-password").val())   // Check if password matches username
+                {
+                    console.log("Login successful");
+                    $("form")[0].reset();   // Reset form contents after submitting
+                    alert("Login successful");
+                    return;
+                }
+            }
+        }
+        alert("Username and or Password is incorrect");
+    });
+});
