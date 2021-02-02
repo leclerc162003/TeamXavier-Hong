@@ -50,6 +50,7 @@ function WeaponRoll(a) {    // Second Roll to find out in the star or "tier" wha
 
 function CharacterRollx10(a) {
     $("#gacha").html(''); // Reset the gacha
+    $(".gacha").show(); // Show gacha
     for (let i = 0; i < 10; i++) {
         var temproll = CharacterRoll(a);
         var roll = temproll[0];     // Name of the png image of item
@@ -65,6 +66,7 @@ function CharacterRollx10(a) {
 }
 function WeaponRollx10(a) {
     $("#gacha").html(''); // Reset the gacha
+    $(".gacha").show(); // Show gacha
     for (let i = 0; i < 10; i++) {
         var temproll = WeaponRoll(a);
         var roll = temproll[0];     // Name of the png image of item
@@ -77,4 +79,5 @@ function WeaponRollx10(a) {
         }
     }
 }
-CharacterRollx10(CharacterArray);
+
+$(".gacha").hide(); // Hide empty gacha
