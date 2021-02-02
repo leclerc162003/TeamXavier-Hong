@@ -39,10 +39,12 @@ form h2, form h3, form a {
 
 form a {
     text-decoration: underline;
+    cursor: pointer;
 }
 
 form a:hover {
-    cursor: pointer;
+    transition-duration: 0.4s;
+    color: white;
 }
 
 .btn {
