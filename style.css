@@ -76,14 +76,18 @@ form a:hover {
     color:white;
 }
 
-#main {
+#main-header {
     display: flex;
     justify-content: center;
-    flex-wrap: wrap;
 }
 
 #main-username {
     color:rgb(221, 197, 137);
+}
+
+#main-body {
+    display: flex;
+    justify-content: center;
 }
 
 #gacha {
