@@ -69,7 +69,12 @@ form a:hover {
     transition-duration: 0.4s;
     background-color:rgb(221, 197, 137);
     color:white;
-  }
+}
+
+.btn:disabled {
+    background-color:rgb(221, 197, 137);
+    color:white;
+}
 
 #gacha {
     display: flex;
