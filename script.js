@@ -46,6 +46,11 @@ function CharacterRoll(a) { // Second Roll to find out in the star or "tier" wha
     var r = CharacterStarRoll();
     var name = a[r][Math.floor(Math.random()*a[r].length)];
     var roll = name.replace(/ /g, "");  // Remove space from the name of the item
+    if (r == 2) {
+        inventory = inventory.concat(`,${name}`);    // Add item to back of inventory after rolling
+    } else {
+        inventory = (`,${name}`).concat(inventory);    // Add rarer item to front of inventory after rolling
+    }
     return [roll, r, name];
 }
 
@@ -53,6 +58,11 @@ function WeaponRoll(a) {    // Second Roll to find out in the star or "tier" wha
     var r = WeaponStarRoll();
     var name = a[r][Math.floor(Math.random()*a[r].length)];
     var roll = name.replace(/ /g, "");  // Remove space from the name of the item
+    if (r == 2) {
+        inventory = inventory.concat(`,${name}`);    // Add item to back of inventory after rolling
+    } else {
+        inventory = (`,${name}`).concat(inventory);    // Add rarer item to front of inventory after rolling
+    }
     return [roll, r, name];
 }
 
