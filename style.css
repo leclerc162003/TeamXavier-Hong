@@ -78,11 +78,17 @@ form a:hover {
 
 #main-header {
     display: flex;
-    justify-content: center;
+    justify-content: space-around;
 }
 
-#main-username {
+#main-header  h1 {
     color:rgb(221, 197, 137);
+    cursor: pointer;
+}
+
+#main-header h1:hover {
+    transition-duration: 0.4s;
+    color:white;
 }
 
 #main-body {
@@ -120,6 +126,20 @@ form a:hover {
     position: relative;
     text-align: center !important;
     bottom: 0px;
+}
+
+#inventory_page {
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+    flex-grow: inherit;
+}
+
+.inventslot {
+    color: white;
+    flex-wrap: wrap;
+    text-align: center;
+    border:5px solid rgb(221, 197, 137);
 }
 
 @media only screen and (max-width: 1250px){
