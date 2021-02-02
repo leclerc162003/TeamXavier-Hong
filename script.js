@@ -84,6 +84,7 @@ function WeaponRollx10(a) {
 $(".gacha").hide(); // Hide empty gacha
 $("#login").hide(); // Hide login
 $("#signup").hide() // Hide Sign Up
+$("#main").hide()   // Hide main div
 
 $("#signup-submit").on("click", function(e) {
     e.preventDefault(); // Prevent submit button from removing values before retrieving
