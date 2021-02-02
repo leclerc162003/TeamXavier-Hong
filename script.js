@@ -134,7 +134,9 @@ $("#signup-submit").on("click", function(e) {
         console.log(response);
     });
     
-    $("form")[1].reset();   // Reset form contents after submitting
+    $("form")[1].reset();   // Reset form contents after submitting     --> Direct user to login page after signing up
+    $("#signup").hide();    // Hide Signup Page
+    $("#login").show();     // Show Login Page 
 });
 
 $("#login-submit").on("click", function(e) {
