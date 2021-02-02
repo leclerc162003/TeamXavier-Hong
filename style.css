@@ -6,13 +6,14 @@ body {
     cursor: pointer;
 }
 
-#welcome_page {
-    /* Center Div */
+.center {
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    /* Fonts */
+}
+
+#welcome_page {
     font-size: 50px;
     font-family: 'Noto Serif SC', serif;
 }

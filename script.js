@@ -88,6 +88,16 @@ $("#main").hide();      // Hide main div
 
 // Event Listeners
 
+$("#btn-login").on("click", function(e) {
+    $("#login").show();
+    $("#welcome_page").hide();
+});
+
+$("#btn-signup").on("click", function(e) {
+    $("#signup").show();
+    $("#welcome_page").hide();
+});
+
 $("#signup-submit").on("click", function(e) {
     e.preventDefault(); // Prevent submit button from removing values before retrieving
 
