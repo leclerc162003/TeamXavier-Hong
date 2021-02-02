@@ -179,10 +179,11 @@ $("#login-submit").on("click", function(e) {    // LOGIN
                 if (response[i].password == $("#login-password").val())     // Check if password matches username
                 {
                     console.log("Login successful");
-                    $("form")[0].reset();       // Reset form contents after submitting
+                    $("form")[0].reset();               // Reset form contents after submitting
                     alert("Login successful");
-                    $("#login").hide()          // Hide Login
-                    $("#main").show();          // Show Main Gacha
+                    $(".btn").prop("disabled", false);  // Enable button
+                    $("#login").hide()                  // Hide Login
+                    $("#main").show();                  // Show Main Gacha
                     username = response[i].name;        
                     inventory = response[i].inventory;
                     id = response[i]._id;
