@@ -122,7 +122,7 @@ $("#signup-back").on("click", function(e) { // Back button to hide signup page a
     $("#welcome_page").show();
 });
 
-$("#signup-submit").on("click", function(e) {
+$("#signup-submit").on("click", function(e) {   // SIGNUP
     e.preventDefault();                 // Prevent submit button from removing values before retrieving
     $(".btn").prop("disabled", true);   // Disables button after submitting
 
@@ -155,7 +155,7 @@ $("#signup-submit").on("click", function(e) {
     $("#login").show();                 // Show Login Page 
 });
 
-$("#login-submit").on("click", function(e) {
+$("#login-submit").on("click", function(e) {    // LOGIN
     e.preventDefault();                 // Prevent submit button from removing values before retrieving
     $(".btn").prop("disabled", true);   // Disables button after submitting
 
