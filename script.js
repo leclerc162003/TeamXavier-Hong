@@ -85,7 +85,7 @@ $(".gacha").hide(); // Hide empty gacha
 $("#login").hide(); // Hide login
 
 $("#signup-submit").on("click", function(e) {
-    x.preventDefault(); // Prevent submit button from removing values before retrieving
+    e.preventDefault(); // Prevent submit button from removing values before retrieving
 
     var profile = {
         "name": $("#signup-username").val(),
