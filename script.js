@@ -13,8 +13,36 @@ var WeaponArray = [Star5WeaponArray, Star4WeaponArray, Star3WeaponArray];
 
 /*User profile*/
 var username = "";
+var password = "";
 var inventory = "";
 var id = "";
+var pulls = 0;
+
+function UpdateInventory() {        // load inventory into database
+    var jsondata = {
+        "name" : username,
+        "password" : password,
+        "inventory" : inventory,
+        "pulls" : pulls};
+
+    var settings = {
+        "async": true,
+        "crossDomain": true,
+        "url": `https://genshingachasim-d09b.restdb.io/rest/profile/${id}`,
+        "method": "PUT",
+        "headers": {
+            "content-type": "application/json",
+            "x-apikey": APIKEY,
+            "cache-control": "no-cache"
+        },
+        "processData": false,
+        "data": JSON.stringify(jsondata)
+    }
+
+    $.ajax(settings).done(function (response) {
+        console.log(response);
+    });
+}
 
 function CharacterStarRoll() {  // First Roll to find out what star or "tier" the item will be
     var roll = Math.floor(Math.random() * 1000);
@@ -81,6 +109,7 @@ function CharacterRollx10(a) {
             $('#gacha').prepend(`<div id="roll${i}" class="gacha"><img src="./Gacha/${roll}.png" alt="${roll}" class="img-gacha"><p>${name}</p></div>`);    // Rarer item is added to the front of the list so its the first to show up
         }
     }
+    UpdateInventory();
 }
 
 function WeaponRollx10(a) {
@@ -97,10 +126,7 @@ function WeaponRollx10(a) {
             $('#gacha').prepend(`<div id="roll${i}" class="gacha"><img src="./Gacha/${roll}.png" alt="${roll}" class="img-gacha"><p>${name}</p></div>`);    // Rarer item is added to the front of the list so its the first to show up
         }
     }
-}
-
-function Login(username, inventory, id) {
-    $("#main-username").html(username);
+    UpdateInventory();
 }
 
 // Start here
@@ -194,10 +220,12 @@ $("#login-submit").on("click", function(e) {    // LOGIN
                     $(".btn").prop("disabled", false);  // Enable button
                     $("#login").hide()                  // Hide Login
                     $("#main").show();                  // Show Main Gacha
-                    username = response[i].name;        
-                    inventory = response[i].inventory;
-                    id = response[i]._id;
-                    Login(username, inventory, id);
+                    username = response[i].name;        // Retrieve username
+                    password = response[i].password     // Retrieve user's password
+                    inventory = response[i].inventory;  // Retrieve user's inventory
+                    pulls = response[i].pulls;          // Retrieve user's no. of pulls
+                    id = response[i]._id;               // Retrieve user's id
+                    $("#main-username").html(username);
                     return;
                 }
             }
