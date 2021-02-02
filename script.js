@@ -43,7 +43,9 @@ function CharacterRoll(a) { // Second Roll to find out in the star or "tier" wha
 
 function WeaponRoll(a) {    // Second Roll to find out in the star or "tier" what item will be chosen
     var r = WeaponStarRoll();
-    return [`${a[r][Math.floor(Math.random()*a[r].length)]}`,`${r}`];   // 
+    var name = a[r][Math.floor(Math.random()*a[r].length)];
+    var roll = name.replace(/ /g, "");  // Remove space from the name of the item
+    return [roll, r, name];
 }
 
 function CharacterRollx10(a) {
