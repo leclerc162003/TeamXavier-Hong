@@ -166,6 +166,11 @@ $("#signup-back").on("click", function(e) { // Back button to hide signup page a
 $("#signup-submit").on("click", function(e) {   // SIGNUP
     e.preventDefault();                 // Prevent submit button from removing values before retrieving
     $(".btn").prop("disabled", true);   // Disables button after submitting
+    if ($("#signup-password").val().length < 8) {   // If password is less than 8 char, inform user, renenable button and break
+        alert("Your password requires at least 8 characters");
+        $(".btn").prop("disabled", false);  // Enable button 
+        return;
+    }
 
     var profile = {
         "name" : $("#signup-username").val(),
@@ -173,29 +178,52 @@ $("#signup-submit").on("click", function(e) {   // SIGNUP
         "inventory" : ",Seperator",
         "pulls" : 0
     };
-    
-    var settings = {
+
+    var settings = {        // Get to compare names
         "async": true,
         "crossDomain": true,
         "url": "https://genshingachasim-d09b.restdb.io/rest/profile",
-        "method": "POST",
+        "method": "GET",
         "headers": {
             "content-type": "application/json",
             "x-apikey": APIKEY,
             "cache-control": "no-cache"
-        },
-        "processData": false,
-        "data": JSON.stringify(profile)
+        }
     }
-    
+      
     $.ajax(settings).done(function (response) {
-        console.log(response);
+        for (var i = 0; i < response.length; i++) {     // Check if name is already taken
+            if (response[i].name == $("#signup-username").val()) {
+                alert("username has already been taken");
+                $(".btn").prop("disabled", false);  // Enable button 
+                return;
+            } else {
+                var settings = {
+                    "async": true,
+                    "crossDomain": true,
+                    "url": "https://genshingachasim-d09b.restdb.io/rest/profile",
+                    "method": "POST",
+                    "headers": {
+                        "content-type": "application/json",
+                        "x-apikey": APIKEY,
+                        "cache-control": "no-cache"
+                    },
+                    "processData": false,
+                    "data": JSON.stringify(profile)
+                }
+                
+                $.ajax(settings).done(function (response) {
+                    $("form")[1].reset();               // Reset form contents after submitting     --> Direct user to login page after signing up
+                    $(".btn").prop("disabled", false);  // Enable button 
+                    $("#signup").hide();                // Hide Signup Page
+                    $("#login").show();                 // Show Login Page 
+                    alert("Name has already been taken");
+                    $(".btn").prop("disabled", false);  // Enable button 
+                    console.log(response);
+                });
+            }
+        }
     });
-    
-    $("form")[1].reset();               // Reset form contents after submitting     --> Direct user to login page after signing up
-    $(".btn").prop("disabled", false);  // Enable button 
-    $("#signup").hide();                // Hide Signup Page
-    $("#login").show();                 // Show Login Page 
 });
 
 $("#login-submit").on("click", function(e) {    // LOGIN
@@ -240,4 +268,19 @@ $("#login-submit").on("click", function(e) {    // LOGIN
         alert("Username and or Password is incorrect");
     $(".btn").prop("disabled", false);          // Enable button after alerting unsuccesful login
     });
+});
+
+$("#inventory").on("click", function(e) {
+    $("#main").hide();              // Hide main page
+    $("#inventory_page").show();    // Show inventory page
+    var name = inventory.split(',');
+    for (var i = 1; i < name.length; i++) {
+        if (name[i] == "Seperator")
+        {
+            break;
+        } else {
+            var item = name[i].replace(/ /g, "");
+            $("#inventory_page").append(`<div id="invent${i}" class="inventslot"><img src="./Gacha/${item}.png" alt="${item}"><p>${name[i]}</p></div>`)
+        }
+    }
 });
