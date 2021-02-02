@@ -89,13 +89,23 @@ $("#main").hide();      // Hide main div
 // Event Listeners
 
 $("#btn-login").on("click", function(e) {   // On click show login page and hide welcome page
-    $("#login").show();
     $("#welcome_page").hide();
+    $("#login").show();
 });
 
 $("#btn-signup").on("click", function(e) {  // On click show signup page and hide welcome page
-    $("#signup").show();
     $("#welcome_page").hide();
+    $("#signup").show();
+});
+
+$("#login-back").on("click", function(e) {  // Back button to hide login page and go back to welcome page
+    $("#login").hide();
+    $("#welcome_page").show();
+});
+
+$("#signup-back").on("click", function(e) { // Back button to hide signup page and go back to welcome page
+    $("#signup").hide();
+    $("#welcome_page").show();
 });
 
 $("#signup-submit").on("click", function(e) {
