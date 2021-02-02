@@ -2,6 +2,21 @@ body {
     background-color: rgb(44, 44, 44);
 }
 
+#welcome_page a {
+    cursor: pointer;
+}
+
+#welcome_page {
+    /* Center Div */
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    /* Fonts */
+    font-size: 50px;
+    font-family: 'Noto Serif SC', serif;
+}
+
 #gacha {
     display: flex;
     justify-content:space-around;
