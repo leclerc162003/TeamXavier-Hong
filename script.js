@@ -83,3 +83,32 @@ function WeaponRollx10(a) {
 
 $(".gacha").hide(); // Hide empty gacha
 $("#login").hide(); // Hide login
+
+$("#signup-submit").on("click", function(x) {
+    x.preventDefault(); // Prevent submit button from removing values before retrieving
+
+    var profile = {
+        "name": $("#signup-username").val(),
+        "password": $("#signup-password").val()
+    };
+    
+    var settings = {
+        "async": true,
+        "crossDomain": true,
+        "url": "https://genshingachasim-d09b.restdb.io/rest/profile",
+        "method": "POST",
+        "headers": {
+            "content-type": "application/json",
+            "x-apikey": APIKEY,
+            "cache-control": "no-cache"
+        },
+        "processData": false,
+        "data": JSON.stringify(profile)
+    }
+    
+    $.ajax(settings).done(function (response) {
+      console.log(response);
+    });
+    
+    $("form")[1].reset();   // Reset form contents after submitting
+})
