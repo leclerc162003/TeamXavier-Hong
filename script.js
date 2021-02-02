@@ -41,6 +41,7 @@ function UpdateProfile() {        // load Profile into database
 
     $.ajax(settings).done(function (response) {
         console.log(response);
+        $(".btn").prop("disabled", false) // Enable button
     });
 }
 
@@ -95,8 +96,9 @@ function WeaponRoll(a) {    // Second Roll to find out in the star or "tier" wha
 }
 
 function CharacterRollx10(a) {
-    $("#gacha").html('');   // Reset the gacha
-    $(".gacha").show();     // Show gacha
+    $(".btn").prop("disabled", true) // Disable button until profile is updated
+    $("#gacha").html('');           // Reset the gacha
+    $(".gacha").show();             // Show gacha
     for (let i = 0; i < 10; i++) {
         var temproll = CharacterRoll(a);
         var roll = temproll[0];     // Name of the png image of item
@@ -114,8 +116,9 @@ function CharacterRollx10(a) {
 }
 
 function WeaponRollx10(a) {
-    $("#gacha").html('');   // Reset the gacha
-    $(".gacha").show();     // Show gacha
+    $(".btn").prop("disabled", true) // Disable button until UpdateProfile() is complete --> This is to ensure that when a user rolls the button is disabled until the database has been properly update before allowing the user to roll again
+    $("#gacha").html('');           // Reset the gacha
+    $(".gacha").show();             // Show gacha
     for (let i = 0; i < 10; i++) {
         var temproll = WeaponRoll(a);
         var roll = temproll[0];     // Name of the png image of item
@@ -165,8 +168,10 @@ $("#signup-submit").on("click", function(e) {   // SIGNUP
     $(".btn").prop("disabled", true);   // Disables button after submitting
 
     var profile = {
-        "name": $("#signup-username").val(),
-        "password": $("#signup-password").val()
+        "name" : $("#signup-username").val(),
+        "password" : $("#signup-password").val(),
+        "inventory" : ",Seperator",
+        "pulls" : 0
     };
     
     var settings = {
