@@ -109,6 +109,7 @@ function CharacterRollx10(a) {
             $('#gacha').prepend(`<div id="roll${i}" class="gacha"><img src="./Gacha/${roll}.png" alt="${roll}" class="img-gacha"><p>${name}</p></div>`);    // Rarer item is added to the front of the list so its the first to show up
         }
     }
+    pulls += 10;
     UpdateProfile();
 }
 
@@ -126,6 +127,7 @@ function WeaponRollx10(a) {
             $('#gacha').prepend(`<div id="roll${i}" class="gacha"><img src="./Gacha/${roll}.png" alt="${roll}" class="img-gacha"><p>${name}</p></div>`);    // Rarer item is added to the front of the list so its the first to show up
         }
     }
+    pulls += 10;
     UpdateProfile();
 }
 
