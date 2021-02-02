@@ -1,5 +1,6 @@
 body {
     background-color: rgb(44, 44, 44);
+    font-family: 'Noto Serif SC', serif;
 }
 
 #welcome_page a {
@@ -11,12 +12,49 @@ body {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+    text-align: center;
 }
 
 #welcome_page {
     font-size: 50px;
-    font-family: 'Noto Serif SC', serif;
+    color:rgb(221, 197, 137);
 }
+
+#login, #signup{
+    /*Border*/
+    border: rgb(221, 197, 137);
+    border-radius: 10px;
+    border-width: 5px;
+    border-style: solid;
+    /*Paddings*/
+    padding-top: 200px;
+    padding-bottom: 200px;
+    padding-left: 150px;
+    padding-right: 150px;
+}
+
+form h3 {
+    color:rgb(221, 197, 137);
+}
+
+.btn {
+    /*Border*/
+    border-color:rgb(221, 197, 137);
+    border: 2px solid rgb(221, 197, 137);
+    padding: 10px 30px;
+    background-color:white;
+    /*Font/Text*/
+    font-family: 'Noto Serif SC', serif;
+    font-size: 20px;
+    font-weight: bolder;
+    color:rgb(221, 197, 137);
+}
+
+.btn:hover {
+    transition-duration: 0.4s;
+    background-color:rgb(221, 197, 137);
+    color:white;
+  }
 
 #gacha {
     display: flex;
@@ -34,7 +72,6 @@ body {
     width: 110px;
     height: 300px;
     position: relative;
-    font-family: 'Noto Serif SC', serif;
     font-size: smaller;
 }
 
