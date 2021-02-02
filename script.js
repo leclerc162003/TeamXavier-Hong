@@ -12,11 +12,11 @@ function CharacterStarRoll() {  // First Roll to find out what star or "tier" th
     var roll = Math.floor(Math.random() * 1000);
     var star = 3;
     if (roll < 6) {
-        star = 0;
+        star = 0;       // 5 Star Character
     } else if (roll < 57) {
-        star = 1;
+        star = 1;       // 4 Star Character
     } else {
-        star = 2;
+        star = 2;       // 3 Star Weapon
     }
     return star;
 }
@@ -25,11 +25,11 @@ function WeaponStarRoll() { // First Roll to find out what star or "tier" the it
     var roll= Math.floor(Math.random() * 1000);
     var star = 3;
     if (roll < 7) {
-        star = 0;
+        star = 0;       // 5 Star Weapon
     } else if (roll < 67) {
-        star = 1;
+        star = 1;       // 4 Star Weapon
     } else {
-        star = 2;
+        star = 2;       // 3 Star Weapon
     }
     return star;
 }
