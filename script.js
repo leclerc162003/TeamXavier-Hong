@@ -81,3 +81,4 @@ function WeaponRollx10(a) {
 }
 
 $(".gacha").hide(); // Hide empty gacha
+$("#login").hide(); // Hide login
