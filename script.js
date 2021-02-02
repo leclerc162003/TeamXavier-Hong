@@ -66,12 +66,13 @@ function CharacterRollx10(a) {
         var name = temproll[2];     // Name of the item with spacing
         console.log(star);
         if (star == 2) {
-            $('#gacha').append(`<div id="roll${i}" class="gacha"><img src="./Gacha/${roll}.png" alt="${roll}" class="img-gacha"><p>${name}</p></div>`);
+            $('#gacha').append(`<div id="roll${i}" class="gacha"><img src="./Gacha/${roll}.png" alt="${roll}" class="img-gacha"><p>${name}</p></div>`);     // Common item gets added to the back of the list
         } else {
-            $('#gacha').prepend(`<div id="roll${i}" class="gacha"><img src="./Gacha/${roll}.png" alt="${roll}" class="img-gacha"><p>${name}</p></div>`);
+            $('#gacha').prepend(`<div id="roll${i}" class="gacha"><img src="./Gacha/${roll}.png" alt="${roll}" class="img-gacha"><p>${name}</p></div>`);    // Rarer item is added to the front of the list so its the first to show up
         }
     }
 }
+
 function WeaponRollx10(a) {
     $("#gacha").html('');   // Reset the gacha
     $(".gacha").show();     // Show gacha
@@ -81,12 +82,18 @@ function WeaponRollx10(a) {
         var star = temproll[1];     // No. of star the item has
         var name = temproll[2];     // Name of the item with spacing
         if (star == 2) {
-            $('#gacha').append(`<div id="roll${i}" class="gacha"><img src="./Gacha/${roll}.png" alt="${roll}" class="img-gacha"><p>${name}</p></div>`);
+            $('#gacha').append(`<div id="roll${i}" class="gacha"><img src="./Gacha/${roll}.png" alt="${roll}" class="img-gacha"><p>${name}</p></div>`);     // Common item gets added to the back of the list
         } else {
-            $('#gacha').prepend(`<div id="roll${i}" class="gacha"><img src="./Gacha/${roll}.png" alt="${roll}" class="img-gacha"><p>${name}</p></div>`);
+            $('#gacha').prepend(`<div id="roll${i}" class="gacha"><img src="./Gacha/${roll}.png" alt="${roll}" class="img-gacha"><p>${name}</p></div>`);    // Rarer item is added to the front of the list so its the first to show up
         }
     }
 }
+
+function Login(username, inventory, id) {
+    $("#main-username").html(username);
+}
+
+// Start here
 
 $(".gacha").hide();     // Hide empty gacha
 $("#login").hide();     // Hide login
@@ -179,8 +186,8 @@ $("#login-submit").on("click", function(e) {
                     username = response[i].name;        
                     inventory = response[i].inventory;
                     id = response[i]._id;
+                    Login(username, inventory, id);
                     return;
-                    
                 }
             }
         }
