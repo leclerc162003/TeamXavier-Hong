@@ -87,7 +87,7 @@ form a:hover {
 
 #main-body {
     display: flex;
-    justify-content: center;
+    justify-content: space-evenly;
 }
 
 #gacha {
