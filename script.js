@@ -109,7 +109,8 @@ $("#signup-back").on("click", function(e) { // Back button to hide signup page a
 });
 
 $("#signup-submit").on("click", function(e) {
-    e.preventDefault();     // Prevent submit button from removing values before retrieving
+    e.preventDefault();                 // Prevent submit button from removing values before retrieving
+    $(".btn").prop("disabled", true);   // Disables button after submitting
 
     var profile = {
         "name": $("#signup-username").val(),
@@ -134,13 +135,15 @@ $("#signup-submit").on("click", function(e) {
         console.log(response);
     });
     
-    $("form")[1].reset();   // Reset form contents after submitting     --> Direct user to login page after signing up
-    $("#signup").hide();    // Hide Signup Page
-    $("#login").show();     // Show Login Page 
+    $("form")[1].reset();               // Reset form contents after submitting     --> Direct user to login page after signing up
+    $(".btn").prop("disabled", false);  // Enable button 
+    $("#signup").hide();                // Hide Signup Page
+    $("#login").show();                 // Show Login Page 
 });
 
 $("#login-submit").on("click", function(e) {
-    e.preventDefault();     // Prevent submit button from removing values before retrieving
+    e.preventDefault();                 // Prevent submit button from removing values before retrieving
+    $(".btn").prop("disabled", true);   // Disables button after submitting
 
     var settings = {
         "async": true,
@@ -169,5 +172,7 @@ $("#login-submit").on("click", function(e) {
             }
         }
         alert("Username and or Password is incorrect");
+    $(".btn").prop("disabled", false);          // Enable button after alerting unsuccesful login
+
     });
 });
