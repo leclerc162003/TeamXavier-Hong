@@ -8,7 +8,7 @@ var Star3WeaponArray = ["Black Tassel","Bloodtainted Greatsword","Cool Steel","D
 var CharacterArray = [Star5CharacterArray, Star4CharacterArray, Star3WeaponArray];
 var WeaponArray = [Star5WeaponArray, Star4WeaponArray, Star3WeaponArray];
 
-function CharacterStarRoll() {
+function CharacterStarRoll() {  // First Roll to find out what star or "tier" the item will be
     var roll = Math.floor(Math.random() * 1000);
     var star = 3;
     if (roll < 6) {
@@ -21,7 +21,7 @@ function CharacterStarRoll() {
     return star;
 }
 
-function WeaponStarRoll() {
+function WeaponStarRoll() { // First Roll to find out what star or "tier" the item will be
     var roll= Math.floor(Math.random() * 1000);
     var star = 3;
     if (roll < 7) {
@@ -34,25 +34,25 @@ function WeaponStarRoll() {
     return star;
 }
 
-function CharacterRoll(a) {
+function CharacterRoll(a) { // Second Roll to find out in the star or "tier" what item will be chosen. Returns 1) Name of PNG image of the item 2) No. of star the weapon has 3) Name of the item with spacing
     var r = CharacterStarRoll();
     var name = a[r][Math.floor(Math.random()*a[r].length)];
-    var roll = name.replace(/ /g, "");
+    var roll = name.replace(/ /g, "");  // Remove space from the name of the item
     return [roll, r, name];
 }
 
-function WeaponRoll(a) {
+function WeaponRoll(a) {    // Second Roll to find out in the star or "tier" what item will be chosen
     var r = WeaponStarRoll();
-    return [`${a[r][Math.floor(Math.random()*a[r].length)]}`,`${r}`];
+    return [`${a[r][Math.floor(Math.random()*a[r].length)]}`,`${r}`];   // 
 }
 
 function CharacterRollx10(a) {
     $("#gacha").html(''); // Reset the gacha
     for (let i = 0; i < 10; i++) {
         var temproll = CharacterRoll(a);
-        var roll = temproll[0];
-        var star = temproll[1];
-        var name = temproll[2];
+        var roll = temproll[0];     // Name of the png image of item
+        var star = temproll[1];     // No. of star the item has
+        var name = temproll[2];     // Name of the item with spacing
         console.log(star);
         if (star == 2) {
             $('#gacha').append(`<div id="roll${i}" class="gacha"><img src="./Gacha/${roll}.png" alt="${roll}" class="gachaimg"><p>${name}</p></div>`);
