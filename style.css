@@ -37,7 +37,7 @@ body {
     font-size: smaller;
 }
 
-.gachaimg {
+.img-gacha {
     object-fit: cover;
     border-radius: 10px;
     width: 110px;
