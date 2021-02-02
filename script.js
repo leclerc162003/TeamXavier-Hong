@@ -217,8 +217,7 @@ $("#signup-submit").on("click", function(e) {   // SIGNUP
                     $(".btn").prop("disabled", false);  // Enable button 
                     $("#signup").hide();                // Hide Signup Page
                     $("#login").show();                 // Show Login Page 
-                    alert("Name has already been taken");
-                    $(".btn").prop("disabled", false);  // Enable button 
+                    alert("Sign up Successful");
                     console.log(response);
                 });
             }
