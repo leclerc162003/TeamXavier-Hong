@@ -7,6 +7,11 @@ body {
     cursor: pointer;
 }
 
+#welcome_page a:hover {
+    transition-duration: 0.4s;
+    color: white;
+}
+
 .center {
     position: absolute;
     top: 50%;
