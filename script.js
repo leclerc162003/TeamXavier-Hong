@@ -50,8 +50,8 @@ function WeaponRoll(a) {    // Second Roll to find out in the star or "tier" wha
 }
 
 function CharacterRollx10(a) {
-    $("#gacha").html(''); // Reset the gacha
-    $(".gacha").show(); // Show gacha
+    $("#gacha").html('');   // Reset the gacha
+    $(".gacha").show();     // Show gacha
     for (let i = 0; i < 10; i++) {
         var temproll = CharacterRoll(a);
         var roll = temproll[0];     // Name of the png image of item
@@ -66,8 +66,8 @@ function CharacterRollx10(a) {
     }
 }
 function WeaponRollx10(a) {
-    $("#gacha").html(''); // Reset the gacha
-    $(".gacha").show(); // Show gacha
+    $("#gacha").html('');   // Reset the gacha
+    $(".gacha").show();     // Show gacha
     for (let i = 0; i < 10; i++) {
         var temproll = WeaponRoll(a);
         var roll = temproll[0];     // Name of the png image of item
@@ -88,18 +88,18 @@ $("#main").hide();      // Hide main div
 
 // Event Listeners
 
-$("#btn-login").on("click", function(e) {
+$("#btn-login").on("click", function(e) {   // On click show login page and hide welcome page
     $("#login").show();
     $("#welcome_page").hide();
 });
 
-$("#btn-signup").on("click", function(e) {
+$("#btn-signup").on("click", function(e) {  // On click show signup page and hide welcome page
     $("#signup").show();
     $("#welcome_page").hide();
 });
 
 $("#signup-submit").on("click", function(e) {
-    e.preventDefault(); // Prevent submit button from removing values before retrieving
+    e.preventDefault();     // Prevent submit button from removing values before retrieving
 
     var profile = {
         "name": $("#signup-username").val(),
@@ -128,7 +128,7 @@ $("#signup-submit").on("click", function(e) {
 });
 
 $("#login-submit").on("click", function(e) {
-    e.preventDefault(); // Prevent submit button from removing values before retrieving
+    e.preventDefault();     // Prevent submit button from removing values before retrieving
 
     var settings = {
         "async": true,
@@ -145,12 +145,12 @@ $("#login-submit").on("click", function(e) {
     $.ajax(settings).done(function (response) {
 
         for (var i = 0; i < response.length; i++) {
-            if (response[i].name == $("#login-username").val())   // Check is username matches database
+            if (response[i].name == $("#login-username").val())             // Check is username matches database
             {
-                if (response[i].password == $("#login-password").val())   // Check if password matches username
+                if (response[i].password == $("#login-password").val())     // Check if password matches username
                 {
                     console.log("Login successful");
-                    $("form")[0].reset();   // Reset form contents after submitting
+                    $("form")[0].reset();       // Reset form contents after submitting
                     alert("Login successful");
                     return;
                 }
