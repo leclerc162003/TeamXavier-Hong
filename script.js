@@ -1,13 +1,20 @@
 var APIKEY = '6018fac06adfba69db8b6c85';
 
+/*Arrays for Gacha*/
 var Star5CharacterArray = ["Albedo","Diluc","Ganyu","Jean","Keqing","Klee","Mona","Qiqi","Tartaglia","Venti","Xiao","Zhongli"];
 var Star4CharacterArray = ["Amber","Barbara","Beidou","Bennett","Chongyun","Diona","Fischl","Kaeya","Lisa","Ningguang","Noelle","Razor","Sucrose","Xiangling","Xingqiu","Xinyan"];
 var Star5WeaponArray = ["Amos Bow","Aquila Favonia","Lost Prayer to the Sacred Winds","Memory of Dust","Primordial Jade Winged Spear","Skyward Atlas","Skyward Blade","Skyward Harp","Skyward Pride","Skyward Spine","Summit Shaper","The Unforged","Vortex Vanquisher","Wolfs Gravestone"];
 var Star4WeaponArray = ["Compound Bow","Crescent Pike","Dragons Bane","Eye of Perception","Favonius Codex","Favonius Greatsword","Favonius Lance","Favonius Sword","Favonius Warbow","Iron Sting","Lions Roar","Mappa Mare","Prototype Amber","Prototype Archaic","Prototype Crescent","Prototype Rancour","Prototype Starglitter","Rainslasher","Royal Grimoire","Royal Longsword","Royal Spear","Rust","Sacrificial Bow","Sacrificial Fragments","Sacrificial Greatsword","Sacrificial Sword","Sword of Descension","The Bell","The Flute","The Stringless","The Widsith","Whiteblind"];
 var Star3WeaponArray = ["Black Tassel","Bloodtainted Greatsword","Cool Steel","Dark Iron Sword","Debate Club","Emerald Orb","Ferrous Shadow","Fillet Blade","Halberd","Harbinger of Dawn","Magic Guide","Messenger","RavenBow","Recurve Bow","Sharpshooters Oath","Skyrider Greatsword","Skyrider Sword","Slingshot","Thrilling Tales of Dragon Slayers","Travelers Handy Sword","Twin Nephrite","White Iron Greatsword","White Tassel"];
 
+/*Array to sort tiers*/
 var CharacterArray = [Star5CharacterArray, Star4CharacterArray, Star3WeaponArray];
 var WeaponArray = [Star5WeaponArray, Star4WeaponArray, Star3WeaponArray];
+
+/*User profile*/
+var username = "";
+var inventory = "";
+var id = "";
 
 function CharacterStarRoll() {  // First Roll to find out what star or "tier" the item will be
     var roll = Math.floor(Math.random() * 1000);
@@ -167,12 +174,17 @@ $("#login-submit").on("click", function(e) {
                     console.log("Login successful");
                     $("form")[0].reset();       // Reset form contents after submitting
                     alert("Login successful");
+                    $("#login").hide()          // Hide Login
+                    $("#main").show();          // Show Main Gacha
+                    username = response[i].name;        
+                    inventory = response[i].inventory;
+                    id = response[i]._id;
                     return;
+                    
                 }
             }
         }
         alert("Username and or Password is incorrect");
     $(".btn").prop("disabled", false);          // Enable button after alerting unsuccesful login
-
     });
 });
