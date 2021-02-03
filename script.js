@@ -279,7 +279,12 @@ $("#inventory").on("click", function(e) {
             break;
         } else {
             var item = name[i].replace(/ /g, "");
-            $("#inventory_page").append(`<div id="invent${i}" class="inventslot"><img src="./Gacha/${item}.png" alt="${item}"><p>${name[i]}</p></div>`)
+            if ($(`#invent${item}`).length == 0) {  // If the div has not been created, create a new one
+                $("#inventory_page").append(`<div id="invent${item}" class="inventslot"><img src="./Gacha/${item}.png" alt="${item}"><p>${name[i]}</p><p>1</p></div>`);
+            } else {    // Else if the div has already been created, add a count
+                var count = parseInt($(`#invent${item} p:last-child`).html()) + 1;  // Get number from previous div
+                $(`#invent${item} p:last-child`).html(`${count}`);                  // Update div number
+            }
         }
     }
 });
