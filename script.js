@@ -80,6 +80,7 @@ function CharacterRoll(a) { // Second Roll to find out in the star or "tier" wha
     } else {
         inventory = (`,${name}`).concat(inventory);     // Add rarer item to front of inventory after rolling
     }
+    pulls += 1;
     return [roll, r, name];
 }
 
@@ -92,6 +93,7 @@ function WeaponRoll(a) {    // Second Roll to find out in the star or "tier" wha
     } else {
         inventory = (`,${name}`).concat(inventory);     // Add rarer item to front of inventory after rolling
     }
+    pulls += 1;
     return [roll, r, name];
 }
 
@@ -111,7 +113,6 @@ function CharacterRollx10(a) {
             $('#gacha').prepend(`<div id="roll${i}" class="gacha"><img src="./Gacha/${roll}.png" alt="${roll}" class="img-gacha"><p>${name}</p></div>`);    // Rarer item is added to the front of the list so its the first to show up
         }
     }
-    pulls += 10;
     UpdateProfile();
 }
 
@@ -130,7 +131,6 @@ function WeaponRollx10(a) {
             $('#gacha').prepend(`<div id="roll${i}" class="gacha"><img src="./Gacha/${roll}.png" alt="${roll}" class="img-gacha"><p>${name}</p></div>`);    // Rarer item is added to the front of the list so its the first to show up
         }
     }
-    pulls += 10;
     UpdateProfile();
 }
 
