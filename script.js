@@ -18,12 +18,19 @@ var inventory = "";
 var id = "";
 var pulls = 0;
 
+/*Store pull count for pity system*/
+var pity10pull = 0;
+var pity100pull = 0;
+
 function UpdateProfile() {        // load Profile into database
     var jsondata = {
         "name" : username,
         "password" : password,
         "inventory" : inventory,
-        "pulls" : pulls};
+        "pulls" : pulls,
+        "pity10pull" : pity10pull,
+        "pity100pull" : pity100pull
+    };
 
     var settings = {
         "async": true,
@@ -72,25 +79,46 @@ function WeaponStarRoll() { // First Roll to find out what star or "tier" the it
 }
 
 function CharacterRoll(a) { // Second Roll to find out in the star or "tier" what item will be chosen. Returns 1) Name of PNG image of the item 2) No. of star the weapon has 3) Name of the item with spacing
-    var r = CharacterStarRoll();
+    pulls += 1;
+    if (pulls - pity100pull == 100) {       // If pity hits, 5 star is guranteed
+        var r = 0;
+    } else if (pulls - pity10pull == 10) {  // If pity hits, 4 star is guranteed
+        var r = 1;
+    } else {                                // Else roll as usual
+        var r = CharacterStarRoll();
+    }
     var name = a[r][Math.floor(Math.random()*a[r].length)];
     var roll = name.replace(/ /g, "");  // Remove space from the name of the item
     if (r == 2) {
         inventory = inventory.concat(`,${name}`);       // Add item to back of inventory after rolling
+    } else if (r == 1) {
+        pity10pull = pulls;             // Whenever a 4 star gets rolled, the 10 pull pity resets
+        inventory = (`,${name}`).concat(inventory);     // Add rarer item to front of inventory after rolling
     } else {
+        pity100pull = pulls;            // Whenever a 5 star gets rolled, the 100 pull pity resets
         inventory = (`,${name}`).concat(inventory);     // Add rarer item to front of inventory after rolling
     }
-    pulls += 1;
     return [roll, r, name];
 }
 
 function WeaponRoll(a) {    // Second Roll to find out in the star or "tier" what item will be chosen
-    var r = WeaponStarRoll();
+    pulls += 1;
+    if (pulls - pity100pull == 100) {       // If pity hits, 5 star is guranteed
+        var r = 0;
+    } else if (pulls - pity10pull == 10) {  // If pity hits, 4 star is guranteed
+        var r = 1;
+    } else {                                // Else roll as usual
+        var r = WeaponStarRoll();
+    }
     var name = a[r][Math.floor(Math.random()*a[r].length)];
     var roll = name.replace(/ /g, "");  // Remove space from the name of the item
     if (r == 2) {
         inventory = inventory.concat(`,${name}`);       // Add item to back of inventory after rolling
+    } else if (r == 1) {
+        pity10pull = pulls;             // Whenever a 4 star gets rolled, the 10 pull pity resets
+        inventory = (`,${name}`).concat(inventory);     // Add rarer item to front of inventory after rolling
     } else {
+        pity100pull = pulls;            // Whenever a 5 star gets rolled, the 100 pull pity resets
         inventory = (`,${name}`).concat(inventory);     // Add rarer item to front of inventory after rolling
     }
     pulls += 1;
@@ -176,7 +204,9 @@ $("#signup-submit").on("click", function(e) {   // SIGNUP
         "name" : $("#signup-username").val(),
         "password" : $("#signup-password").val(),
         "inventory" : ",Seperator",
-        "pulls" : 0
+        "pulls" : 0,
+        "pity10pull" : 0,
+        "pity100pull" : 0
     };
 
     var settings = {        // Get to compare names
@@ -249,16 +279,18 @@ $("#login-submit").on("click", function(e) {    // LOGIN
                 if (response[i].password == $("#login-password").val())     // Check if password matches username
                 {
                     console.log("Login successful");
-                    $("form")[0].reset();               // Reset form contents after submitting
+                    $("form")[0].reset();                   // Reset form contents after submitting
                     alert("Login successful");
-                    $(".btn").prop("disabled", false);  // Enable button
-                    $("#login").hide()                  // Hide Login
-                    $("#main").show();                  // Show Main Gacha
-                    username = response[i].name;        // Retrieve username
-                    password = response[i].password     // Retrieve user's password
-                    inventory = response[i].inventory;  // Retrieve user's inventory
-                    pulls = response[i].pulls;          // Retrieve user's no. of pulls
-                    id = response[i]._id;               // Retrieve user's id
+                    $(".btn").prop("disabled", false);      // Enable button
+                    $("#login").hide()                      // Hide Login
+                    $("#main").show();                      // Show Main Gacha
+                    username = response[i].name;            // Retrieve username
+                    password = response[i].password         // Retrieve user's password
+                    inventory = response[i].inventory;      // Retrieve user's inventory
+                    pulls = response[i].pulls;              // Retrieve user's no. of pulls
+                    pity100pull = response[i].pity100pull;  // Retrieve pity pull count for 5 star
+                    pity10pull = response[i].pity10pull;    // Retrieve pity pull count for 4 star
+                    id = response[i]._id;                   // Retrieve user's id
                     $("#main-username").html(username);
                     return;
                 }
