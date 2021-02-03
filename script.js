@@ -121,7 +121,6 @@ function WeaponRoll(a) {    // Second Roll to find out in the star or "tier" wha
         pity100pull = pulls;            // Whenever a 5 star gets rolled, the 100 pull pity resets
         inventory = (`,${name}`).concat(inventory);     // Add rarer item to front of inventory after rolling
     }
-    pulls += 1;
     return [roll, r, name];
 }
 
