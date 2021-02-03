@@ -164,10 +164,11 @@ function WeaponRollx10(a) {
 
 // Start here
 
-$(".gacha").hide();     // Hide empty gacha
-$("#login").hide();     // Hide login
-$("#signup").hide();    // Hide Sign Up
-$("#main").hide();      // Hide main div
+$(".gacha").hide();         // Hide empty gacha
+$("#login").hide();         // Hide login
+$("#signup").hide();        // Hide Sign Up
+$("#main").hide();          // Hide main div
+$("#inventory_page").hide() // Hide inventory page
 
 // Event Listeners
 
@@ -301,10 +302,11 @@ $("#login-submit").on("click", function(e) {    // LOGIN
     });
 });
 
-$("#inventory").on("click", function(e) {
+$("#btn-inventory").on("click", function(e) {
     $("#main").hide();              // Hide main page
     $("#inventory_page").show();    // Show inventory page
     var name = inventory.split(',');
+    $("#inventory").html("");
     for (var i = 1; i < name.length; i++) {
         if (name[i] == "Seperator") // If name is seperator, items afterwards is 3Stars which will clutter inventory, so we will only show all 4-5 stars and break after hitting the Seperator
         {
@@ -312,11 +314,16 @@ $("#inventory").on("click", function(e) {
         } else {
             var item = name[i].replace(/ /g, "");
             if ($(`#invent${item}`).length == 0) {  // If the div has not been created, create a new one
-                $("#inventory_page").append(`<div id="invent${item}" class="inventslot"><img src="./Gacha/${item}.png" alt="${item}"><p>${name[i]}</p><p>1</p></div>`);
+                $("#inventory").append(`<div id="invent${item}" class="inventslot"><img src="./Gacha/${item}.png" alt="${item}"><p>${name[i]}</p><p>1</p></div>`);
             } else {    // Else if the div has already been created, add a count
                 var count = parseInt($(`#invent${item} p:last-child`).html()) + 1;  // Get number from previous div
                 $(`#invent${item} p:last-child`).html(`${count}`);                  // Update div number
             }
         }
     }
+});
+
+$("#inventory-back").on("click", function(e) { // Back button to hide signup page and go back to welcome page
+    $("#inventory_page").hide();
+    $("#main").show();
 });

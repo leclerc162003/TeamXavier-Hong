@@ -128,11 +128,21 @@ form a:hover {
     bottom: 0px;
 }
 
-#inventory_page {
+#inventory {
     display: flex;
     justify-content: space-evenly;
     flex-wrap: wrap;
     flex-grow: inherit;
+}
+
+#inventory-back {
+    cursor: pointer;
+    color:rgb(221, 197, 137);
+}
+
+#inventory-back:hover {
+    transition-duration: 0.4s;
+    color:white;
 }
 
 .inventslot {
