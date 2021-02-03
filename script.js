@@ -274,7 +274,7 @@ $("#inventory").on("click", function(e) {
     $("#inventory_page").show();    // Show inventory page
     var name = inventory.split(',');
     for (var i = 1; i < name.length; i++) {
-        if (name[i] == "Seperator")
+        if (name[i] == "Seperator") // If name is seperator, items afterwards is 3Stars which will clutter inventory, so we will only show all 4-5 stars and break after hitting the Seperator
         {
             break;
         } else {
