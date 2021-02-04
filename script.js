@@ -436,6 +436,18 @@ $("#inventory-back").on("click", function(e) { // Back button to hide signup pag
 });
 
 // Stats
+$("#btn-stats").on("click", function(e) {   // Open stats
+    $("#main").hide();
+    $("#stats").fadeIn(1000);
+    $("#stats-pull").html(`You have pulled ${pulls} times`);
+    $("#stats-pitypull10").html(`You are ${10 - pulls + pity10pull} pulls away from a guranteed 4 star`);
+    $("#stats-pitypull100").html(`You are ${100 - pulls + pity100pull} pulls away from a guranteed 5 star`);
+})
+
+$("#stats-back").on("click", function(e) {  // Close Stats
+    $("#stats").hide();
+    $("#main").fadeIn(1000);
+})
 
 
 
