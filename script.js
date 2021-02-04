@@ -167,28 +167,29 @@ $(".gacha").hide();         // Hide empty gacha
 $("#login").hide();         // Hide login
 $("#signup").hide();        // Hide Sign Up
 $("#main").hide();          // Hide main div
-$("#inventory_page").hide() // Hide inventory page
+$("#inventory_page").hide();// Hide inventory page
+$("#welcome_page").hide();  // Hide welcome page
 
 // Event Listeners
 
 $("#btn-login").on("click", function(e) {   // On click show login page and hide welcome page
     $("#welcome_page").hide();
-    $("#login").show();
+    $("#login").fadeIn(1000);
 });
 
 $("#btn-signup").on("click", function(e) {  // On click show signup page and hide welcome page
     $("#welcome_page").hide();
-    $("#signup").show();
+    $("#signup").fadeIn(1000);
 });
 
 $("#login-back").on("click", function(e) {  // Back button to hide login page and go back to welcome page
     $("#login").hide();
-    $("#welcome_page").show();
+    $("#welcome_page").fadeIn(1000);
 });
 
 $("#signup-back").on("click", function(e) { // Back button to hide signup page and go back to welcome page
     $("#signup").hide();
-    $("#welcome_page").show();
+    $("#welcome_page").fadeIn(1000);
 });
 
 $("#signup-submit").on("click", function(e) {   // SIGNUP
@@ -325,4 +326,8 @@ $("#btn-inventory").on("click", function(e) {
 $("#inventory-back").on("click", function(e) { // Back button to hide signup page and go back to welcome page
     $("#inventory_page").hide();
     $("#main").show();
+});
+
+$(document).ready(function() {          // On ready, fade in welcome page to greet user
+    $("#welcome_page").fadeIn(2000);
 });
