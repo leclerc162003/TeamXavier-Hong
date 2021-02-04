@@ -388,6 +388,10 @@ $("#password-change-submit").on("click", function(e) {  // Change Password
       });      
 })
 
+$("#btn-logout").on("click", function(e) {      // Logout User
+    location.reload();
+})
+
 // Inventory
 
 $("#btn-inventory").on("click", function(e) {
