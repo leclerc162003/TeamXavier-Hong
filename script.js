@@ -129,8 +129,8 @@ function CharacterRollx10(a) {
     $("#gacha").html('');               // Reset the gacha
     $("#main-header").hide();           // Hide Main
     $("#main-body").hide();             //
-    $("#gacha").fadeIn(5000);           // Show gacha
-    $("#gacha-back").fadeIn(5000);      // Sh0w gacha-back button
+    $("#gacha").fadeIn(2000);           // Show gacha
+    $("#gacha-back").fadeIn(2000);      // Sh0w gacha-back button
     for (let i = 0; i < 10; i++) {
         var temproll = CharacterRoll(a);
         var roll = temproll[0];     // Name of the png image of item
@@ -436,6 +436,7 @@ $("#inventory-back").on("click", function(e) { // Back button to hide signup pag
 });
 
 // Stats
+
 $("#btn-stats").on("click", function(e) {   // Open stats
     $("#main").hide();
     $("#stats").fadeIn(1000);
@@ -448,8 +449,6 @@ $("#stats-back").on("click", function(e) {  // Close Stats
     $("#stats").hide();
     $("#main").fadeIn(1000);
 })
-
-
 
 // Initiate
 
