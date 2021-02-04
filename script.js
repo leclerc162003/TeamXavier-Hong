@@ -185,6 +185,7 @@ $("#inventory_page").hide();    // Hide inventory page
 $("#welcome_page").hide();      // Hide welcome page
 $("#profile-settings").hide();  // Hide profile settings
 $("#password-change").hide();   // Hide password change form
+$("canvas").hide();             // Hide game canvas
 
 // Event Listeners
 
