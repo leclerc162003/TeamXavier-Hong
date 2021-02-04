@@ -125,9 +125,12 @@ function WeaponRoll(a) {    // Second Roll to find out in the star or "tier" wha
 }
 
 function CharacterRollx10(a) {
-    $(".btn").prop("disabled", true) // Disable button until profile is updated
-    $("#gacha").html('');           // Reset the gacha
-    $(".gacha").show();             // Show gacha
+    $(".btn").prop("disabled", true)    // Disable button until UpdateProfile() is complete --> This is to ensure that when a user rolls the button is disabled until the database has been properly update before allowing the user to roll again
+    $("#gacha").html('');               // Reset the gacha
+    $("#main-header").hide();           // Hide Main
+    $("#main-body").hide();             //
+    $("#gacha").fadeIn(5000);           // Show gacha
+    $("#gacha-back").fadeIn(5000);      // Sh0w gacha-back button
     for (let i = 0; i < 10; i++) {
         var temproll = CharacterRoll(a);
         var roll = temproll[0];     // Name of the png image of item
@@ -144,9 +147,12 @@ function CharacterRollx10(a) {
 }
 
 function WeaponRollx10(a) {
-    $(".btn").prop("disabled", true) // Disable button until UpdateProfile() is complete --> This is to ensure that when a user rolls the button is disabled until the database has been properly update before allowing the user to roll again
-    $("#gacha").html('');           // Reset the gacha
-    $(".gacha").show();             // Show gacha
+    $(".btn").prop("disabled", true)    // Disable button until UpdateProfile() is complete --> This is to ensure that when a user rolls the button is disabled until the database has been properly update before allowing the user to roll again
+    $("#gacha").html('');               // Reset the gacha
+    $("#main-header").hide();           // Hide Main
+    $("#main-body").hide();             //
+    $("#gacha").fadeIn(5000);           // Show gacha
+    $("#gacha-back").fadeIn(5000);      // Sh0w gacha-back button
     for (let i = 0; i < 10; i++) {
         var temproll = WeaponRoll(a);
         var roll = temproll[0];     // Name of the png image of item
@@ -161,9 +167,17 @@ function WeaponRollx10(a) {
     UpdateProfile();
 }
 
+$("#gacha-back").on("click", function(e) {
+    $("#gacha").hide();
+    $("#gacha-back").hide();
+    $("#main-header").fadeIn(1000);
+    $("#main-body").fadeIn(1000);
+});
+
 // Start here
 
-$(".gacha").hide();             // Hide empty gacha
+$("#gacha-back").hide();        // Hide cross button for gacha
+$("#gacha").hide();             // Hide empty gacha
 $("#login").hide();             // Hide login
 $("#signup").hide();            // Hide Sign Up
 $("#main").hide();              // Hide main div

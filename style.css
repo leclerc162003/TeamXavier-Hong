@@ -79,7 +79,32 @@ form a:hover {
 
 #main-body {
     display: flex;
-    justify-content: space-evenly;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+#btn-characterroll, #btn-weaponroll {
+    width: 1300px;
+    height: 60px;
+}
+
+#main-body img {
+    max-width: 100%;
+    height: auto;
+}
+
+#gacha-back {
+    font-size: larger;
+    position: fixed;
+    top: 1%;
+    left: 1%;
+    color:rgb(221, 197, 137);
+    cursor: pointer;
+}
+
+#gacha-back:hover {
+    transition-duration: 0.4s;
+    color: white;
 }
 
 #gacha {
