@@ -163,12 +163,13 @@ function WeaponRollx10(a) {
 
 // Start here
 
-$(".gacha").hide();         // Hide empty gacha
-$("#login").hide();         // Hide login
-$("#signup").hide();        // Hide Sign Up
-$("#main").hide();          // Hide main div
-$("#inventory_page").hide();// Hide inventory page
-$("#welcome_page").hide();  // Hide welcome page
+$(".gacha").hide();             // Hide empty gacha
+$("#login").hide();             // Hide login
+$("#signup").hide();            // Hide Sign Up
+$("#main").hide();              // Hide main div
+$("#inventory_page").hide();    // Hide inventory page
+$("#welcome_page").hide();      // Hide welcome page
+$("#profile-settings").hide();    // Hide profile settings
 
 // Event Listeners
 
@@ -301,6 +302,22 @@ $("#login-submit").on("click", function(e) {    // LOGIN
     $(".btn").prop("disabled", false);          // Enable button after alerting unsuccesful login
     });
 });
+
+$("#main-username").on("click", function(e) {       // Profile settings Which includes Logging out, Changing Password and more
+    // Hide main-body and open profile settings
+    $("#main-body").hide();
+    $("#main-username").hide();
+    $("#btn-inventory").hide();
+    $("#profile-settings").fadeIn(1000);
+});
+
+$("#profile-back").on("click", function(e) {        // Return from profile settings back to Main
+    // Hide profile settings and open main-body
+    $("#profile-settings").hide();
+    $("#main-body").fadeIn(1000);
+    $("#main-username").fadeIn(1000);
+    $("#btn-inventory").fadeIn(1000);
+})
 
 $("#btn-inventory").on("click", function(e) {
     $("#main").hide();              // Hide main page

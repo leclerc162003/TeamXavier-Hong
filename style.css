@@ -43,7 +43,6 @@ form h2, form h3, form a {
 }
 
 form a {
-    text-decoration: underline;
     cursor: pointer;
 }
 
@@ -126,6 +125,19 @@ form a:hover {
     position: relative;
     text-align: center !important;
     bottom: 0px;
+}
+
+#profile-settings {
+    color:rgb(221, 197, 137);
+}
+
+.profile-settings-options {
+    cursor: pointer;
+}
+
+.profile-settings-options:hover {
+    transition-duration: 0.4s;
+    color:white;
 }
 
 #inventory {
