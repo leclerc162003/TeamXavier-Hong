@@ -143,30 +143,11 @@ form a:hover {
     color:rgb(221, 197, 137);
 }
 
-.profile-settings-options {
-    cursor: pointer;
-}
-
-.profile-settings-options:hover {
-    transition-duration: 0.4s;
-    color:white;
-}
-
 #inventory {
     display: flex;
     justify-content: space-evenly;
     flex-wrap: wrap;
     flex-grow: inherit;
-}
-
-#inventory-back {
-    cursor: pointer;
-    color:rgb(221, 197, 137);
-}
-
-#inventory-back:hover {
-    transition-duration: 0.4s;
-    color:white;
 }
 
 .inventslot {
@@ -182,6 +163,21 @@ form a:hover {
     object-fit: cover;
     height: 400px;
     width: 500px;
+}
+
+#stats {
+    color:rgb(221, 197, 137);
+}
+
+/* Cross for Inventory, Stats and Profile Settings */
+#inventory-back, #stats-back, .profile-settings-options {
+    cursor: pointer;
+    color:rgb(221, 197, 137);
+}
+
+#inventory-back:hover, #stats-back:hover, .profile-settings-options:hover {
+    transition-duration: 0.4s;
+    color:white;
 }
 
 @media only screen and (max-width: 1250px){

@@ -185,7 +185,7 @@ $("#inventory_page").hide();    // Hide inventory page
 $("#welcome_page").hide();      // Hide welcome page
 $("#profile-settings").hide();  // Hide profile settings
 $("#password-change").hide();   // Hide password change form
-$("canvas").hide();             // Hide game canvas
+$("#stats").hide();             // Hide game canvas
 
 // Event Listeners
 
@@ -432,8 +432,12 @@ $("#btn-inventory").on("click", function(e) {
 
 $("#inventory-back").on("click", function(e) { // Back button to hide signup page and go back to welcome page
     $("#inventory_page").hide();
-    $("#main").show();
+    $("#main").fadeIn(1000);
 });
+
+// Stats
+
+
 
 // Initiate
 
