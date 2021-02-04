@@ -80,8 +80,22 @@
 
         <div id="profile-settings" class="center">
             <h2 id="profile-back" class="profile-settings-options">&#10006;</h2>
-            <h2 id="password-change" class="profile-settings-options">Change Password</h2>
-            <h2 id="logout" class="profile-settings-options">Logout</h2>
+            <h2 id="btn-password-change" class="profile-settings-options">Change Password</h2>
+            <h2 id="btn-logout" class="profile-settings-options">Logout</h2>
+        </div>
+
+        <div id="password-change" class="center">
+            <form>
+                <a id="password-change-back">&#10006;</a>
+                <h2>Change Password</h2>
+                <h3>Old Password</h3>
+                <input type="password" id="password-change-old" name="password" pattern=".{8,}" title="Must contain at least 8 or more characters" required>
+                <br>
+                <h3>New Password</h3>
+                <input type="password" id="password-change-new" name="password" pattern=".{8,}" title="Must contain at least 8 or more characters" required>
+                <br><br>
+                <input type="submit" value="Confirm" id="password-change-submit" class="btn">
+            </form>
         </div>
 
         <script src="script.js"></script>

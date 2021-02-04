@@ -169,9 +169,12 @@ $("#signup").hide();            // Hide Sign Up
 $("#main").hide();              // Hide main div
 $("#inventory_page").hide();    // Hide inventory page
 $("#welcome_page").hide();      // Hide welcome page
-$("#profile-settings").hide();    // Hide profile settings
+$("#profile-settings").hide();  // Hide profile settings
+$("#password-change").hide();   // Hide password change form
 
 // Event Listeners
+
+// Login / Signup Form
 
 $("#btn-login").on("click", function(e) {   // On click show login page and hide welcome page
     $("#welcome_page").hide();
@@ -303,6 +306,8 @@ $("#login-submit").on("click", function(e) {    // LOGIN
     });
 });
 
+// Profile Settings
+
 $("#main-username").on("click", function(e) {       // Profile settings Which includes Logging out, Changing Password and more
     // Hide main-body and open profile settings
     $("#main-body").hide();
@@ -317,7 +322,73 @@ $("#profile-back").on("click", function(e) {        // Return from profile setti
     $("#main-body").fadeIn(1000);
     $("#main-username").fadeIn(1000);
     $("#btn-inventory").fadeIn(1000);
+});
+
+$("#btn-password-change").on("click", function(e) {     // Allow user to change password
+    $("#profile-settings").hide();
+    $("#password-change").fadeIn(1000);
+});
+
+$("#password-change-back").on("click", function(e) {    // Exit Password Change
+    $("#password-change").hide();
+    $("#profile-settings").fadeIn(1000);
+});
+
+$("#password-change-submit").on("click", function(e) {  // Change Password
+    e.preventDefault();     // Prevent submit button from removing values before retrieving
+    $(".btn").prop("disabled", true);   // Disables button after submitting
+
+    var settings = {        // Get user current password to check if old password is valid
+        "async": true,
+        "crossDomain": true,
+        "url": `https://genshingachasim-d09b.restdb.io/rest/profile/${id}`,
+        "method": "GET",
+        "headers": {
+          "content-type": "application/json",
+          "x-apikey": APIKEY,
+          "cache-control": "no-cache"
+        }
+      }
+      
+      $.ajax(settings).done(function (response) {
+        if ($("#password-change-old").val() != response.password) {
+            alert("Old password is incorrect");
+            $(".btn").prop("disabled", false);                      // Enable Button
+        } else if ($("#password-change-new").val().length < 8){     // If password is below 8 char, reject
+            alert("New password must be 8 characters or more");
+            $(".btn").prop("disabled", false);                      // Enable Button
+        } else {                                                    // If all conditions are met, change password
+            var jsondata = {
+                "name" : username,
+                "password" : $("#password-change-new").val(),       // Change password to new
+                "inventory" : inventory,
+                "pulls" : pulls,
+                "pity10pull" : pity10pull,
+                "pity100pull" : pity100pull
+            };
+            var settings = {
+            "async": true,
+            "crossDomain": true,
+            "url": `https://genshingachasim-d09b.restdb.io/rest/profile/${id}`,
+            "method": "PUT",
+            "headers": {
+                "content-type": "application/json",
+                "x-apikey": APIKEY,
+                "cache-control": "no-cache"
+            },
+            "processData": false,
+            "data": JSON.stringify(jsondata)
+            }
+
+            $.ajax(settings).done(function (response) {
+                alert("Password has been changed! Please login again"); // Tell user change has been successful
+                location.reload();                                      // Reload the document
+            });
+        }
+      });      
 })
+
+// Inventory
 
 $("#btn-inventory").on("click", function(e) {
     $("#main").hide();              // Hide main page
@@ -344,6 +415,8 @@ $("#inventory-back").on("click", function(e) { // Back button to hide signup pag
     $("#inventory_page").hide();
     $("#main").show();
 });
+
+// Initiate
 
 $(document).ready(function() {          // On ready, fade in welcome page to greet user
     $("#welcome_page").fadeIn(2000);

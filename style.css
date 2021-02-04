@@ -25,19 +25,6 @@ body {
     color:rgb(221, 197, 137);
 }
 
-#login, #signup{
-    /*Border*/
-    border: rgb(221, 197, 137);
-    border-radius: 10px;
-    border-width: 5px;
-    border-style: solid;
-    /*Paddings*/
-    padding-top: 200px;
-    padding-bottom: 200px;
-    padding-left: 150px;
-    padding-right: 150px;
-}
-
 form h2, form h3, form a {
     color:rgb(221, 197, 137);
 }
