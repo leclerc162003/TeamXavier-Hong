@@ -435,13 +435,6 @@ $("#inventory-back").on("click", function(e) { // Back button to hide signup pag
     $("#main").show();
 });
 
-// Game
-
-$("#btn-play").on("click", function(e) {    // Hide Main and show Game
-    $("#main").hide();
-    $("canvas").fadeIn(1000);
-})
-
 // Initiate
 
 $(document).ready(function() {          // On ready, fade in welcome page to greet user
