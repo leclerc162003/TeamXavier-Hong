@@ -139,10 +139,18 @@ form a:hover {
     bottom: 0px;
 }
 
+
+/* Profile settings */
 #profile-settings {
     color:rgb(221, 197, 137);
 }
 
+#btn-delete {
+    cursor: pointer;
+    color: red;
+}
+
+/* Inventory */
 #inventory {
     display: flex;
     justify-content: space-evenly;
@@ -187,7 +195,7 @@ form a:hover {
     color:rgb(221, 197, 137);
 }
 
-#inventory-back:hover, #stats-back:hover, .profile-settings-options:hover {
+#inventory-back:hover, #stats-back:hover, .profile-settings-options:hover, #btn-delete:hover, #btn-delete-confirm:hover {
     transition-duration: 0.4s;
     color:white;
 }

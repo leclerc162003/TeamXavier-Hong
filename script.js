@@ -417,6 +417,30 @@ $("#btn-logout").on("click", function(e) {      // Logout User
     location.reload();
 })
 
+$("#btn-delete").on("click", function(e) {      // Delete user account
+    $("#btn-delete").attr("onclick", "deleteAccount()");  // Change delete button to confirm delete button
+    $("#btn-delete").html("Delete Account (Confirm)");  // Update text for delete button
+});
+
+function deleteAccount() {  // Confirm Delete user account
+    var settings = {
+        "async": true,
+        "crossDomain": true,
+        "url": `https://genshingachasim-d09b.restdb.io/rest/profile/${id}`,
+        "method": "DELETE",
+        "headers": {
+            "content-type": "application/json",
+            "x-apikey": APIKEY,
+            "cache-control": "no-cache"
+        }
+    }
+      
+    $.ajax(settings).done(function (response) {
+        console.log(response);
+        location.reload();
+    });
+};
+
 // Inventory
 
 $("#btn-inventory").on("click", function(e) {
