@@ -38,6 +38,10 @@ form a:hover {
     color: white;
 }
 
+label {
+    color:rgb(221, 197, 137);
+}
+
 .btn {
     /*Border*/
     border-color:rgb(221, 197, 137);

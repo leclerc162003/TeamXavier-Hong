@@ -318,6 +318,11 @@ $("#login-submit").on("click", function(e) {    // LOGIN
             {
                 if (response[i].password == $("#login-password").val())     // Check if password matches username
                 {
+                    if(document.getElementById("remember").checked == true) {                     // If user check remember me, remember user id
+                        console.log("You are remembered");
+                        localStorage.setItem("id", response[i]._id);
+                    }
+
                     console.log("Login successful");
                     $("form")[0].reset();                           // Reset form contents after submitting
                     $("lottie-player").remove();                    // Remove lottie
@@ -430,6 +435,7 @@ $("#password-change-submit").on("click", function(e) {  // Change Password
 })
 
 $("#btn-logout").on("click", function(e) {      // Logout User
+    localStorage.removeItem("id");
     location.reload();
 })
 
@@ -555,8 +561,36 @@ $("#stats-back").on("click", function(e) {  // Close Stats
     $("#main").fadeIn(1000);
 })
 
-// Initiate
+// Start Page
 
-$(document).ready(function() {          // On ready, fade in welcome page to greet user
-    $("#welcome_page").fadeIn(2000);
-});
+$("#welcome_page").fadeIn(2000);
+if (localStorage.getItem("id") != null) {
+    var settings = {
+        "async": true,
+        "crossDomain": true,
+        "url": `https://genshingachasim-d09b.restdb.io/rest/profile/${localStorage.getItem("id")}`,
+        "method": "GET",
+        "headers": {
+            "content-type": "application/json",
+            "x-apikey": APIKEY,
+            "cache-control": "no-cache"
+        }
+    }
+        
+    $.ajax(settings).done(function (response) {
+        $("#welcome_page").hide();                           // Hide Welcome Page
+        $("#login").hide();                                   // Hide login  (In case user opens)
+        $("#signup").hide();                                  // Hide Signup (In case user opens)
+        $("#main").show();                                   // Show Main Gacha
+        username = response.name;                    // Retrieve username
+        password = response.password                 // Retrieve user's password
+        star4inventory = response.star4inventory;    // Retrieve user's inventory
+        star5inventory = response.star5inventory;    // Retrieve user's inventory
+        pulls = response.pulls;                      // Retrieve user's no. of pulls
+        pity100pull = response.pity100pull;          // Retrieve pity pull count for 5 star
+        pity10pull = response.pity10pull;            // Retrieve pity pull count for 4 star
+        id = response._id;                           // Retrieve user's id
+        $("#main-username").html(username);
+        return;
+    });
+}
