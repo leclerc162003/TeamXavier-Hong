@@ -8,7 +8,11 @@ github link - https://leclerc162003.github.io/TeamXavier-Hong/
 
 ## Credits
 ### Gacha
-All artworks and images are from miHoYo and were taken from https://genshin-impact.fandom.com/wiki/Genshin_Impact_Wiki
+All artworks and images are from miHoYo and were taken from 
+
+https://genshin.mihoyo.com/en/home
+
+https://genshin-impact.fandom.com/wiki/Genshin_Impact_Wiki
 
 ### Font
 Google Fonts 
