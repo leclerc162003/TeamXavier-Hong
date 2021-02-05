@@ -11,6 +11,10 @@ var Star3WeaponArray = ["Black Tassel","Bloodtainted Greatsword","Cool Steel","D
 var CharacterArray = [Star5CharacterArray, Star4CharacterArray, Star3WeaponArray];
 var WeaponArray = [Star5WeaponArray, Star4WeaponArray, Star3WeaponArray];
 
+// Lottie
+
+var dotloading = `<lottie-player src=".\\Lottie\\lf30_editor_ykhctrgv.json" background="#0000000"  speed="1"  style="width: 300px; height: 100px;"loop autoplay></lottie-player>`;
+
 /*User profile*/
 var username = "";
 var password = "";
@@ -212,7 +216,9 @@ $("#signup-back").on("click", function(e) { // Back button to hide signup page a
 $("#signup-submit").on("click", function(e) {   // SIGNUP
     e.preventDefault();                 // Prevent submit button from removing values before retrieving
     $(".btn").prop("disabled", true);   // Disables button after submitting
+    $("#signup").append(dotloading);     // Display Lottie while loading
     if ($("#signup-password").val().length < 8) {   // If password is less than 8 char, inform user, renenable button and break
+        $("lottie-player").remove();        // Remove lottie
         alert("Your password requires at least 8 characters");
         $(".btn").prop("disabled", false);  // Enable button 
         return;
@@ -243,6 +249,7 @@ $("#signup-submit").on("click", function(e) {   // SIGNUP
     $.ajax(settings).done(function (response) {
         for (var i = 0; i < response.length; i++) {     // Check if name is already taken
             if (response[i].name == $("#signup-username").val()) {
+                $("lottie-player").remove();        // Remove lottie
                 alert("username has already been taken");
                 $(".btn").prop("disabled", false);  // Enable button 
                 return;
@@ -266,6 +273,7 @@ $("#signup-submit").on("click", function(e) {   // SIGNUP
                     $(".btn").prop("disabled", false);  // Enable button 
                     $("#signup").hide();                // Hide Signup Page
                     $("#login").show();                 // Show Login Page 
+                    $("lottie-player").remove();        // Remove lottie
                     alert("Sign up Successful");
                     console.log(response);
                 });
@@ -277,6 +285,7 @@ $("#signup-submit").on("click", function(e) {   // SIGNUP
 $("#login-submit").on("click", function(e) {    // LOGIN
     e.preventDefault();                 // Prevent submit button from removing values before retrieving
     $(".btn").prop("disabled", true);   // Disables button after submitting
+    $("#login").append(dotloading);     // Display Lottie while loading
 
     var settings = {
         "async": true,
@@ -299,6 +308,7 @@ $("#login-submit").on("click", function(e) {    // LOGIN
                 {
                     console.log("Login successful");
                     $("form")[0].reset();                           // Reset form contents after submitting
+                    $("lottie-player").remove();                    // Remove lottie
                     alert("Login successful");
                     $(".btn").prop("disabled", false);              // Enable button
                     $("#login").hide()                              // Hide Login
@@ -316,8 +326,9 @@ $("#login-submit").on("click", function(e) {    // LOGIN
                 }
             }
         }
+        $("lottie-player").remove();                           // Remove lottie
         alert("Username and or Password is incorrect");
-    $(".btn").prop("disabled", false);          // Enable button after alerting unsuccesful login
+        $(".btn").prop("disabled", false);          // Enable button after alerting unsuccesful login
     });
 });
 
