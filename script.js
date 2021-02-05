@@ -14,6 +14,7 @@ var WeaponArray = [Star5WeaponArray, Star4WeaponArray, Star3WeaponArray];
 // Lottie
 
 var dotloading = `<lottie-player src=".\\Lottie\\lf30_editor_ykhctrgv.json" background="#0000000"  speed="1"  style="width: 300px; height: 100px;"loop autoplay></lottie-player>`;
+var crossloading = `<lottie-player src=".\\Lottie\\lf30_VTQZC6.json" background="#0000000"  speed="1"  style="width: 300px; height: 300px;"loop autoplay></lottie-player>`;
 
 /*User profile*/
 var username = "";
@@ -423,6 +424,8 @@ $("#btn-delete").on("click", function(e) {      // Delete user account
 });
 
 function deleteAccount() {  // Confirm Delete user account
+    $("#stats").hide();
+    $("body").html(`<div class="center">${crossloading}</div>`)
     var settings = {
         "async": true,
         "crossDomain": true,
