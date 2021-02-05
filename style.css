@@ -169,6 +169,18 @@ form a:hover {
     color:rgb(221, 197, 137);
 }
 
+#no1 {
+    color: gold;
+}
+
+#no2 {
+    color: silver;
+}
+
+#no3 {
+    color:  #cd7f32;
+}
+
 /* Cross for Inventory, Stats and Profile Settings */
 #inventory-back, #stats-back, .profile-settings-options {
     cursor: pointer;

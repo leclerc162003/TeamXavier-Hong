@@ -440,6 +440,61 @@ $("#btn-stats").on("click", function(e) {   // Open stats
     $("#stats-pull").html(`You have pulled ${pulls} times`);
     $("#stats-pitypull10").html(`You are ${10 - pulls + pity10pull} pulls away from a guranteed 4 star`);
     $("#stats-pitypull100").html(`You are ${100 - pulls + pity100pull} pulls away from a guranteed 5 star`);
+
+    // Leaderboard
+    var settings = {
+        "async": true,
+        "crossDomain": true,
+        "url": "https://genshingachasim-d09b.restdb.io/rest/profile",
+        "method": "GET",
+        "headers": {
+            "content-type": "application/json",
+            "x-apikey": APIKEY,
+            "cache-control": "no-cache"
+        }
+    }
+      
+    $.ajax(settings).done(function (response) {
+        var no1name = "";
+        var no15star = 0;
+        var no2name = "";
+        var no25star = 0;
+        var no3name = "";
+        var no35star = 0;
+
+        for (i = 0; i < response.length; i++) {     // Find number 1
+            var numof5star = response[i].star5inventory.split(',').length - 1;
+            if (numof5star > no15star) {
+                no15star = numof5star;
+                no1name = response[i].name;
+            }
+        }
+
+        for (i=0; i < response.length; i++) {       // Find number 2
+            var numof5star = response[i].star5inventory.split(',').length - 1;
+            if (numof5star > no15star) {           
+                if (response[i].name != no1name) {                  // If user is not number 1
+                    no25star = numof5star;
+                    no2name = response[i].name;
+                }
+            }
+        }
+
+        for (i=0; i < response.length; i++) {       // Find number 3
+            var numof5star = response[i].star5inventory.split(',').length - 1;
+            if (numof5star > no15star) {            
+                if (response[i].name != (no1name || no2name)) {     // If user is not number 1 or 2
+                    no35star = numof5star;
+                    no3name = response[i].name;
+                }
+            }
+        }
+
+        $("#no1").html(`#1 ${no1name} <i>${no15star} 5 Star</i>`);
+        $("#no2").html(`#2 ${no2name} <i>${no25star} 5 Star</i>`);
+        $("#no3").html(`#3 ${no3name} <i>${no35star} 5 Star</i>`);
+    });
+      
 })
 
 $("#stats-back").on("click", function(e) {  // Close Stats
