@@ -12,6 +12,7 @@ All artworks and images are from miHoYo and were taken from https://genshin-impa
 
 ### Font
 Google Fonts 
+
 https://fonts.google.com/specimen/Noto+Serif+SC?preview.text=Genshin%20Impact%20B&preview.text_type=custom&sidebar.open=true&selection.family=Noto+Serif+SC:wght@500;900
 
 ### Lottie
