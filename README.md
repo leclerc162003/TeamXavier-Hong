@@ -16,7 +16,9 @@ https://fonts.google.com/specimen/Noto+Serif+SC?preview.text=Genshin%20Impact%20
 
 ### Lottie
 https://lottiefiles.com/5040-shooting-star
+
 https://lottiefiles.com/22711-cross-button
+
 https://lottiefiles.com/890-loading-animation
 
 ## Acknowledgement
