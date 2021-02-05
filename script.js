@@ -484,7 +484,7 @@ $("#btn-stats").on("click", function(e) {   // Open stats
         for (i=0; i < response.length; i++) {       // Find number 3
             var numof5star = response[i].star5inventory.split(',').length - 1;
             if (numof5star > no35star) {            
-                if (response[i].name != no1name || response[i].name != no2name) {     // If user is not number 1 or 2
+                if (response[i].name == no1name || response[i].name == no2name) {     // If user is not number 1 or 2
                 } else {
                     no35star = numof5star;
                     no3name = response[i].name;
