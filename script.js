@@ -447,6 +447,7 @@ $("#btn-delete").on("click", function(e) {      // Delete user account
 function deleteAccount() {  // Confirm Delete user account
     $("#stats").hide();
     $("body").html(`<div class="center">${crossloading}</div>`)
+    localStorage.removeItem("id");
     var settings = {
         "async": true,
         "crossDomain": true,
