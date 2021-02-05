@@ -149,8 +149,8 @@ function WeaponRollx10(a) {
     $("#gacha").html('');               // Reset the gacha
     $("#main-header").hide();           // Hide Main
     $("#main-body").hide();             //
-    $("#gacha").fadeIn(5000);           // Show gacha
-    $("#gacha-back").fadeIn(5000);      // Sh0w gacha-back button
+    $("#gacha").fadeIn(2000);           // Show gacha
+    $("#gacha-back").fadeIn(2000);      // Sh0w gacha-back button
     for (let i = 0; i < 10; i++) {
         var temproll = WeaponRoll(a);
         var roll = temproll[0];     // Name of the png image of item
