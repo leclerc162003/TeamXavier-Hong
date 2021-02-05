@@ -14,7 +14,8 @@ var WeaponArray = [Star5WeaponArray, Star4WeaponArray, Star3WeaponArray];
 /*User profile*/
 var username = "";
 var password = "";
-var inventory = "";
+var star4inventory = "";
+var star5inventory = "";
 var id = "";
 var pulls = 0;
 
@@ -26,7 +27,8 @@ function UpdateProfile() {        // load Profile into database
     var jsondata = {
         "name" : username,
         "password" : password,
-        "inventory" : inventory,
+        "star4inventory" : star4inventory,
+        "star5inventory" : star5inventory,
         "pulls" : pulls,
         "pity10pull" : pity10pull,
         "pity100pull" : pity100pull
@@ -89,14 +91,12 @@ function CharacterRoll(a) { // Second Roll to find out in the star or "tier" wha
     }
     var name = a[r][Math.floor(Math.random()*a[r].length)];
     var roll = name.replace(/ /g, "");  // Remove space from the name of the item
-    if (r == 2) {
-        inventory = inventory.concat(`,${name}`);       // Add item to back of inventory after rolling
-    } else if (r == 1) {
+    if (r == 1) {
         pity10pull = pulls;             // Whenever a 4 star gets rolled, the 10 pull pity resets
-        inventory = (`,${name}`).concat(inventory);     // Add rarer item to front of inventory after rolling
-    } else {
+        star4inventory = star4inventory.concat(`${name},`);     // Add rarer item to 4starinventory after rolling
+    } else if (r == 0) {
         pity100pull = pulls;            // Whenever a 5 star gets rolled, the 100 pull pity resets
-        inventory = (`,${name}`).concat(inventory);     // Add rarer item to front of inventory after rolling
+        star5inventory = (star5inventory).concat(`,${name}`);   // Add rarer item to 5starinventory after rolling
     }
     return [roll, r, name];
 }
@@ -112,14 +112,12 @@ function WeaponRoll(a) {    // Second Roll to find out in the star or "tier" wha
     }
     var name = a[r][Math.floor(Math.random()*a[r].length)];
     var roll = name.replace(/ /g, "");  // Remove space from the name of the item
-    if (r == 2) {
-        inventory = inventory.concat(`,${name}`);       // Add item to back of inventory after rolling
-    } else if (r == 1) {
+    if (r == 1) {
         pity10pull = pulls;             // Whenever a 4 star gets rolled, the 10 pull pity resets
-        inventory = (`,${name}`).concat(inventory);     // Add rarer item to front of inventory after rolling
-    } else {
+        star4inventory = (star4inventory).concat(`${name},`);   // Add rarer item to 4starinventory after rolling
+    } else if (r == 0) {
         pity100pull = pulls;            // Whenever a 5 star gets rolled, the 100 pull pity resets
-        inventory = (`,${name}`).concat(inventory);     // Add rarer item to front of inventory after rolling
+        star5inventory = (star5inventory).concat(`,${name}`);   // Add rarer item to 5starinventory after rolling
     }
     return [roll, r, name];
 }
@@ -223,8 +221,8 @@ $("#signup-submit").on("click", function(e) {   // SIGNUP
     var profile = {
         "name" : $("#signup-username").val(),
         "password" : $("#signup-password").val(),
-        "inventory" : ",Seperator",
-        "pulls" : 0,
+        "star4inventory" : "",
+        "star5inventory" : "",
         "pity10pull" : 0,
         "pity100pull" : 0
     };
@@ -299,18 +297,19 @@ $("#login-submit").on("click", function(e) {    // LOGIN
                 if (response[i].password == $("#login-password").val())     // Check if password matches username
                 {
                     console.log("Login successful");
-                    $("form")[0].reset();                   // Reset form contents after submitting
+                    $("form")[0].reset();                           // Reset form contents after submitting
                     alert("Login successful");
-                    $(".btn").prop("disabled", false);      // Enable button
-                    $("#login").hide()                      // Hide Login
-                    $("#main").show();                      // Show Main Gacha
-                    username = response[i].name;            // Retrieve username
-                    password = response[i].password         // Retrieve user's password
-                    inventory = response[i].inventory;      // Retrieve user's inventory
-                    pulls = response[i].pulls;              // Retrieve user's no. of pulls
-                    pity100pull = response[i].pity100pull;  // Retrieve pity pull count for 5 star
-                    pity10pull = response[i].pity10pull;    // Retrieve pity pull count for 4 star
-                    id = response[i]._id;                   // Retrieve user's id
+                    $(".btn").prop("disabled", false);              // Enable button
+                    $("#login").hide()                              // Hide Login
+                    $("#main").show();                              // Show Main Gacha
+                    username = response[i].name;                    // Retrieve username
+                    password = response[i].password                 // Retrieve user's password
+                    star4inventory = response[i].star4inventory;    // Retrieve user's inventory
+                    star5inventory = response[i].star5inventory;    // Retrieve user's inventory
+                    pulls = response[i].pulls;                      // Retrieve user's no. of pulls
+                    pity100pull = response[i].pity100pull;          // Retrieve pity pull count for 5 star
+                    pity10pull = response[i].pity10pull;            // Retrieve pity pull count for 4 star
+                    id = response[i]._id;                           // Retrieve user's id
                     $("#main-username").html(username);
                     return;
                 }
@@ -376,7 +375,8 @@ $("#password-change-submit").on("click", function(e) {  // Change Password
             var jsondata = {
                 "name" : username,
                 "password" : $("#password-change-new").val(),       // Change password to new
-                "inventory" : inventory,
+                "star4inventory" : star4inventory,
+                "star5inventory" : star5inventory,
                 "pulls" : pulls,
                 "pity10pull" : pity10pull,
                 "pity100pull" : pity100pull
@@ -412,20 +412,17 @@ $("#btn-logout").on("click", function(e) {      // Logout User
 $("#btn-inventory").on("click", function(e) {
     $("#main").hide();              // Hide main page
     $("#inventory_page").show();    // Show inventory page
-    var name = inventory.split(',');
+    var star4 = star4inventory.split(',');
+    var star5 = star5inventory.split(',');
+    var name = star5.concat(star4);            // 5 Star gets priority
     $("#inventory").html("");
-    for (var i = 1; i < name.length; i++) {
-        if (name[i] == "Seperator") // If name is seperator, items afterwards is 3Stars which will clutter inventory, so we will only show all 4-5 stars and break after hitting the Seperator
-        {
-            break;
-        } else {
-            var item = name[i].replace(/ /g, "");
-            if ($(`#invent${item}`).length == 0) {  // If the div has not been created, create a new one
-                $("#inventory").append(`<div id="invent${item}" class="inventslot"><img src="./Gacha/${item}.png" alt="${item}"><p>${name[i]}</p><p>1</p></div>`);
-            } else {    // Else if the div has already been created, add a count
-                var count = parseInt($(`#invent${item} p:last-child`).html()) + 1;  // Get number from previous div
-                $(`#invent${item} p:last-child`).html(`${count}`);                  // Update div number
-            }
+    for (var i = 1; i < name.length - 1; i++) {     // i=1 as the start has a comma and the first item contains nothing, -1 Is to remove the last item which contains nothing as there is always a comma at the back
+        var item = name[i].replace(/ /g, "");
+        if ($(`#invent${item}`).length == 0) {  // If the div has not been created, create a new one
+            $("#inventory").append(`<div id="invent${item}" class="inventslot"><img src="./Gacha/${item}.png" alt="${item}"><p>${name[i]}</p><p>1</p></div>`);
+        } else {    // Else if the div has already been created, add a count
+            var count = parseInt($(`#invent${item} p:last-child`).html()) + 1;  // Get number from previous div
+            $(`#invent${item} p:last-child`).html(`${count}`);                  // Update div number
         }
     }
 });
