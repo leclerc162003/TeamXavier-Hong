@@ -15,6 +15,7 @@ var WeaponArray = [Star5WeaponArray, Star4WeaponArray, Star3WeaponArray];
 
 var dotloading = `<lottie-player src=".\\Lottie\\lf30_editor_ykhctrgv.json" background="#0000000"  speed="1"  style="width: 300px; height: 100px;"loop autoplay></lottie-player>`;
 var crossloading = `<lottie-player src=".\\Lottie\\lf30_VTQZC6.json" background="#0000000"  speed="1"  style="width: 300px; height: 300px;"loop autoplay></lottie-player>`;
+var shootingstar = `<lottie-player src=".\\Lottie\\lf30_editor_kolutnul.json" background="#0000000"  speed="1"  style="width: 300px; height: 300px;"loop autoplay class="center"></lottie-player>`;
 
 /*User profile*/
 var username = "";
@@ -132,8 +133,7 @@ function CharacterRollx10(a) {
     $("#gacha").html('');               // Reset the gacha
     $("#main-header").hide();           // Hide Main
     $("#main-body").hide();             //
-    $("#gacha").fadeIn(2000);           // Show gacha
-    $("#gacha-back").fadeIn(2000);      // Sh0w gacha-back button
+    $("body").append(shootingstar);   // Show lottie shooting star
     for (let i = 0; i < 10; i++) {
         var temproll = CharacterRoll(a);
         var roll = temproll[0];     // Name of the png image of item
@@ -147,6 +147,11 @@ function CharacterRollx10(a) {
         }
     }
     UpdateProfile();
+    window.setTimeout(function(e) {
+        $("#gacha").fadeIn(2000);           // Show gacha
+        $("#gacha-back").fadeIn(2000);      // Show gacha-back button
+        $("lottie-player").remove();        // Remove lottie
+    }, 5000);
 }
 
 function WeaponRollx10(a) {
@@ -154,8 +159,7 @@ function WeaponRollx10(a) {
     $("#gacha").html('');               // Reset the gacha
     $("#main-header").hide();           // Hide Main
     $("#main-body").hide();             //
-    $("#gacha").fadeIn(2000);           // Show gacha
-    $("#gacha-back").fadeIn(2000);      // Sh0w gacha-back button
+    $("body").append(shootingstar);   // Show lottie shooting star
     for (let i = 0; i < 10; i++) {
         var temproll = WeaponRoll(a);
         var roll = temproll[0];     // Name of the png image of item
@@ -168,6 +172,11 @@ function WeaponRollx10(a) {
         }
     }
     UpdateProfile();
+    window.setTimeout(function(e) {
+        $("#gacha").fadeIn(2000);           // Show gacha
+        $("#gacha-back").fadeIn(2000);      // Show gacha-back button
+        $("lottie-player").remove();        // Remove lottie
+    }, 5000);
 }
 
 $("#gacha-back").on("click", function(e) {
