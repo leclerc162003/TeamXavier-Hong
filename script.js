@@ -369,8 +369,9 @@ $("#password-change-back").on("click", function(e) {    // Exit Password Change
 });
 
 $("#password-change-submit").on("click", function(e) {  // Change Password
-    e.preventDefault();     // Prevent submit button from removing values before retrieving
-    $(".btn").prop("disabled", true);   // Disables button after submitting
+    e.preventDefault();                         // Prevent submit button from removing values before retrieving
+    $(".btn").prop("disabled", true);           // Disables button after submitting
+    $("#password-change").append(dotloading);   // Show lottie
 
     var settings = {        // Get user current password to check if old password is valid
         "async": true,
@@ -386,9 +387,11 @@ $("#password-change-submit").on("click", function(e) {  // Change Password
       
       $.ajax(settings).done(function (response) {
         if ($("#password-change-old").val() != response.password) {
+            $("lottie-player").remove()                                    // Remove Lottie
             alert("Old password is incorrect");
             $(".btn").prop("disabled", false);                      // Enable Button
         } else if ($("#password-change-new").val().length < 8){     // If password is below 8 char, reject
+            $("lottie-player").remove()                                    // Remove Lottie
             alert("New password must be 8 characters or more");
             $(".btn").prop("disabled", false);                      // Enable Button
         } else {                                                    // If all conditions are met, change password
@@ -416,6 +419,7 @@ $("#password-change-submit").on("click", function(e) {  // Change Password
             }
 
             $.ajax(settings).done(function (response) {
+                $("lottie-player").remove()                                    // Remove Lottie
                 alert("Password has been changed! Please login again"); // Tell user change has been successful
                 location.reload();                                      // Reload the document
             });
