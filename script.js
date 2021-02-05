@@ -223,6 +223,7 @@ $("#signup-submit").on("click", function(e) {   // SIGNUP
         "password" : $("#signup-password").val(),
         "star4inventory" : "",
         "star5inventory" : "",
+        "pulls" : 0,
         "pity10pull" : 0,
         "pity100pull" : 0
     };
@@ -472,7 +473,7 @@ $("#btn-stats").on("click", function(e) {   // Open stats
 
         for (i=0; i < response.length; i++) {       // Find number 2
             var numof5star = response[i].star5inventory.split(',').length - 1;
-            if (numof5star > no15star) {           
+            if (numof5star > no25star) {           
                 if (response[i].name != no1name) {                  // If user is not number 1
                     no25star = numof5star;
                     no2name = response[i].name;
@@ -482,8 +483,9 @@ $("#btn-stats").on("click", function(e) {   // Open stats
 
         for (i=0; i < response.length; i++) {       // Find number 3
             var numof5star = response[i].star5inventory.split(',').length - 1;
-            if (numof5star > no15star) {            
-                if (response[i].name != (no1name || no2name)) {     // If user is not number 1 or 2
+            if (numof5star > no35star) {            
+                if (response[i].name != no1name || response[i].name != no2name) {     // If user is not number 1 or 2
+                } else {
                     no35star = numof5star;
                     no3name = response[i].name;
                 }
