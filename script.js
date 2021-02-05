@@ -326,8 +326,7 @@ $("#login-submit").on("click", function(e) {    // LOGIN
 $("#main-username").on("click", function(e) {       // Profile settings Which includes Logging out, Changing Password and more
     // Hide main-body and open profile settings
     $("#main-body").hide();
-    $("#main-username").hide();
-    $("#btn-inventory").hide();
+    $("#main-header").hide();
     $("#profile-settings").fadeIn(1000);
 });
 
@@ -335,8 +334,7 @@ $("#profile-back").on("click", function(e) {        // Return from profile setti
     // Hide profile settings and open main-body
     $("#profile-settings").hide();
     $("#main-body").fadeIn(1000);
-    $("#main-username").fadeIn(1000);
-    $("#btn-inventory").fadeIn(1000);
+    $("#main-header").fadeIn(1000);
 });
 
 $("#btn-password-change").on("click", function(e) {     // Allow user to change password
