@@ -13,6 +13,7 @@ We planned this GenGacha to be catered for players who love the game Genshin Imp
 
 
 ## Features
+### Existing Features 
 - Allows user to create or login to an account so that they can store their progress
 
 - Inventory (with rarer items shown first) so that users can see the items theey have pulled
@@ -21,6 +22,8 @@ We planned this GenGacha to be catered for players who love the game Genshin Imp
 
 - Leaderboard feature available so that users can see how they reank compared to other players.
 ## Credits
+- Genshin Impact
+- Lottie Animaton
 ### Gacha
 All artworks and images are from miHoYo and were taken from 
 
