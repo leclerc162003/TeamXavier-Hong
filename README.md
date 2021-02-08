@@ -13,7 +13,13 @@ We planned this GenGacha to be catered for players who love the game Genshin Imp
 
 
 ## Features
+- Allows user to create or login to an account so that they can store their progress
 
+- Inventory (with rarer items shown first) so that users can see the items theey have pulled
+
+- Profile settings allows users to change their password, log out or delete account. This increases the level of security and do not waste space in the database.
+
+- Leaderboard feature available so that users can see how they reank compared to other players.
 ## Credits
 ### Gacha
 All artworks and images are from miHoYo and were taken from 
