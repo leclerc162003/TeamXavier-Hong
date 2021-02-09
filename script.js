@@ -102,7 +102,7 @@ function CharacterRoll(a) { // Second Roll to find out in the star or "tier" wha
         star4inventory = star4inventory.concat(`${name},`);     // Add rarer item to 4starinventory after rolling
     } else if (r == 0) {
         pity100pull = pulls;            // Whenever a 5 star gets rolled, the 100 pull pity resets
-        star5inventory = (star5inventory).concat(`,${name}`);   // Add rarer item to 5starinventory after rolling
+        star5inventory = (star5inventory).concat(`${name},`);   // Add rarer item to 5starinventory after rolling
     }
     return [roll, r, name];
 }
@@ -123,7 +123,7 @@ function WeaponRoll(a) {    // Second Roll to find out in the star or "tier" wha
         star4inventory = (star4inventory).concat(`${name},`);   // Add rarer item to 4starinventory after rolling
     } else if (r == 0) {
         pity100pull = pulls;            // Whenever a 5 star gets rolled, the 100 pull pity resets
-        star5inventory = (star5inventory).concat(`,${name}`);   // Add rarer item to 5starinventory after rolling
+        star5inventory = (star5inventory).concat(`${name},`);   // Add rarer item to 5starinventory after rolling
     }
     return [roll, r, name];
 }
@@ -143,7 +143,7 @@ function CharacterRollx10(a) {
         if (star == 2) {
             $('#gacha').append(`<div id="roll${i}" class="gacha"><img src="./Gacha/${roll}.png" alt="${roll}" class="img-gacha"><p style="color:blue;font-weight:bold;">${name}</p></div>`);      // Common item gets added to the back of the list
         } else if (star == 1) {
-            $('#gacha').prepend(`<div id="roll${i}" class="gacha"><img src="./Gacha/${roll}.png" alt="${roll}" class="img-gacha"><p style="color:purple;font-weight:bold;">${name}</p></div>`);   // Rarer item is added to the front of the list so its the first to show up
+            $('#gacha').prepend(`<div id="roll${i}" class="gacha"><img src="./Gacha/${roll}.png" alt="${roll}" class="img-gacha"><p style="color:magenta;font-weight:bold;">${name}</p></div>`);   // Rarer item is added to the front of the list so its the first to show up
         } else {
             $('#gacha').prepend(`<div id="roll${i}" class="gacha"><img src="./Gacha/${roll}.png" alt="${roll}" class="img-gacha"><p style="color:gold;font-weight:bold;">${name}</p></div>`);     // Rarer item is added to the front of the list so its the first to show up
         }
@@ -473,18 +473,22 @@ $("#btn-inventory").on("click", function(e) {
     $("#inventory_page").show();    // Show inventory page
     var star4 = star4inventory.split(',');
     var star5 = star5inventory.split(',');
-    var name = star5.concat(star4);            // 5 Star gets priority
     $("#inventory").html("");
-    for (var i = 1; i < name.length - 1; i++) {     // i=1 as the start has a comma and the first item contains nothing, -1 Is to remove the last item which contains nothing as there is always a comma at the back
-        var item = name[i].replace(/ /g, "");
+    displayInvent(star5,"gold");
+    displayInvent(star4,"magenta");
+});
+
+function displayInvent(I,color) {
+    for (var i = 0; i < I.length - 1; i++) {     // i=1 as the start has a comma and the first item contains nothing, -1 Is to remove the last item which contains nothing as there is always a comma at the back
+        var item = I[i].replace(/ /g, "");
         if ($(`#invent${item}`).length == 0) {  // If the div has not been created, create a new one
-            $("#inventory").append(`<div id="invent${item}" class="inventslot"><img src="./Gacha/${item}.png" alt="${item}"><p>${name[i]}</p><p>1</p></div>`);
+            $("#inventory").append(`<div id="invent${item}" class="inventslot"><img src="./Gacha/${item}.png" alt="${item}"><p style="color:${color};">${I[i]}</p><p>1</p></div>`);
         } else {    // Else if the div has already been created, add a count
             var count = parseInt($(`#invent${item} p:last-child`).html()) + 1;  // Get number from previous div
             $(`#invent${item} p:last-child`).html(`${count}`);                  // Update div number
         }
     }
-});
+}
 
 $("#inventory-back").on("click", function(e) { // Back button to hide signup page and go back to welcome page
     $("#inventory_page").hide();
