@@ -208,6 +208,17 @@ label {
     color:white;
 }
 
+#github a {
+    text-decoration: none;
+    cursor: pointer;
+    color:rgb(221, 197, 137);
+}
+
+#github a:hover {
+    transition-duration: 0.4s;
+    color: white;
+}
+
 @media only screen and (max-width: 1250px){
     #gacha {
         height: 605px;

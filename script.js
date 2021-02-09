@@ -207,22 +207,26 @@ $("#stats").hide();             // Hide game canvas
 
 $("#btn-login").on("click", function(e) {   // On click show login page and hide welcome page
     $("#welcome_page").hide();
+    $("#github").hide();                    // Hide Github link
     $("#login").fadeIn(1000);
 });
 
 $("#btn-signup").on("click", function(e) {  // On click show signup page and hide welcome page
     $("#welcome_page").hide();
+    $("#github").hide();                    // Hide Github link
     $("#signup").fadeIn(1000);
 });
 
 $("#login-back").on("click", function(e) {  // Back button to hide login page and go back to welcome page
     $("#login").hide();
     $("#welcome_page").fadeIn(1000);
+    $("#github").fadeIn(1000);
 });
 
 $("#signup-back").on("click", function(e) { // Back button to hide signup page and go back to welcome page
     $("#signup").hide();
     $("#welcome_page").fadeIn(1000);
+    $("#github").fadeIn(1000);
 });
 
 $("#signup-submit").on("click", function(e) {   // SIGNUP
@@ -328,7 +332,7 @@ $("#login-submit").on("click", function(e) {    // LOGIN
                     $("lottie-player").remove();                    // Remove lottie
                     alert("Login successful");
                     $(".btn").prop("disabled", false);              // Enable button
-                    $("#login").hide()                              // Hide Login
+                    $("#login").hide()  ;                           // Hide Login
                     $("#main").show();                              // Show Main Gacha
                     username = response[i].name;                    // Retrieve username
                     password = response[i].password                 // Retrieve user's password
@@ -584,8 +588,9 @@ if (localStorage.getItem("id") != null) {
         
     $.ajax(settings).done(function (response) {
         $("#welcome_page").hide();                           // Hide Welcome Page
-        $("#login").hide();                                   // Hide login  (In case user opens)
-        $("#signup").hide();                                  // Hide Signup (In case user opens)
+        $("#github").hide();                                 // Hide Github link
+        $("#login").hide();                                  // Hide login  (In case user opens)
+        $("#signup").hide();                                 // Hide Signup (In case user opens)
         $("#main").show();                                   // Show Main Gacha
         username = response.name;                    // Retrieve username
         password = response.password                 // Retrieve user's password
