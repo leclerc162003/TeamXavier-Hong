@@ -146,6 +146,35 @@ The Profile Settings has 3 options, Change Password, Logout & Delete Account.
 
 **Change Password**
 
+- Enter Old Password (Website checks if old password is correct by referring to database [RestDB](https://restdb.io/)
+- Enter New Password (Requires at least 8 characters, website will reject your password if it does not meet the criteria)
+- Submit Button that will be disabled upon submission until the user's action is processed
+- Dot loading lottie animation to show users the website is loading their input
+- Website updates users from [RestDB](https://restdb.io/) and puts new password into database
+
+**Logout**
+
+- Logs user out
+- Deletes user's ID from localstorage so user will not autmoaticcally log into the website if they previously selected remember me in login
+
+**Delete Account**
+
+- Delete Account button changes into a Confirm Delete Account button (Ensure user doesn't delete account by accident)
+- Confirm Delete Account button Deletes user from the database [RestDB](https://restdb.io/)
+- While processing a [cross button lottie](https://lottiefiles.com/22711-cross-button) will be playing
+
+### Stats / Leaderboard
+
+- Display top 3 players based off number of 5 star they have
+
+This is done by counting the length of user's 5 star inventory
+```Javascript
+var numof5star = response[i].star5inventory.split(',').length - 1;
+```
+
+- Display user's stats (No. of pulls, No. of pulls to 4 star pity & No. of pulls to 5 star pity)
+
+Pulls, 4 star pity & 5 star pity is saved in [RestDB](https://restdb.io/)
 
 ## Credits
 - Genshin Impact
