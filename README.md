@@ -50,7 +50,7 @@ Users are able to view their total pulls, number of pulls to 4 star / 5 star pit
 ### Welcome page
 - Option to Login / Signup
 - Has a background image of Ganyu to fill the otherwise plain background
-- TBA link to github for users looking for instructions
+- Link to github for users looking for instructions
 
 ### Sign Up
 - Cross button to go back to Welcome page
