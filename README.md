@@ -139,7 +139,7 @@ The inventory displays the characters / weapon the user has. For the sake of les
 
 When the Inventory is opened, the website requests the user's 2 inventory list from [RestDB](https://restdb.io/) 5 Star Inventory and 4 Star Inventory, and displays on the website their items, sorted with 5 stars at the top followed by 4 stars.
 
-TBA 5 Star characters / weapon can be identified by their yellow names while 4 Star characters / weapons with purple names
+5 Star characters / weapon can be identified by their gold names while 4 Star characters / weapons with magenta names
 
 ### Profile Settings
 The Profile Settings has 3 options, Change Password, Logout & Delete Account.
