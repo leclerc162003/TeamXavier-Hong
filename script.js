@@ -168,9 +168,11 @@ function WeaponRollx10(a) {
         var star = temproll[1];     // No. of star the item has
         var name = temproll[2];     // Name of the item with spacing
         if (star == 2) {
-            $('#gacha').append(`<div id="roll${i}" class="gacha"><img src="./Gacha/${roll}.png" alt="${roll}" class="img-gacha"><p>${name}</p></div>`);     // Common item gets added to the back of the list
+            $('#gacha').append(`<div id="roll${i}" class="gacha"><img src="./Gacha/${roll}.png" alt="${roll}" class="img-gacha"><p style="color:blue;font-weight:bold;">${name}</p></div>`);      // Common item gets added to the back of the list
+        } else if (star == 1) {
+            $('#gacha').prepend(`<div id="roll${i}" class="gacha"><img src="./Gacha/${roll}.png" alt="${roll}" class="img-gacha"><p style="color:magenta;font-weight:bold;">${name}</p></div>`);   // Rarer item is added to the front of the list so its the first to show up
         } else {
-            $('#gacha').prepend(`<div id="roll${i}" class="gacha"><img src="./Gacha/${roll}.png" alt="${roll}" class="img-gacha"><p>${name}</p></div>`);    // Rarer item is added to the front of the list so its the first to show up
+            $('#gacha').prepend(`<div id="roll${i}" class="gacha"><img src="./Gacha/${roll}.png" alt="${roll}" class="img-gacha"><p style="color:gold;font-weight:bold;">${name}</p></div>`);     // Rarer item is added to the front of the list so its the first to show up
         }
     }
     UpdateProfile();
