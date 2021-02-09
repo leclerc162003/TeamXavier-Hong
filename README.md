@@ -176,26 +176,34 @@ var numof5star = response[i].star5inventory.split(',').length - 1;
 
 Pulls, 4 star pity & 5 star pity is saved in [RestDB](https://restdb.io/)
 
+## Technologies Used
+- [Jquery](https://jquery.com/)
+    - This project uses JQuery to simplify DOM manipulation.
+- [RestDB](https://restdb.io/)
+    - This project uses RestDB to manage and store data.
+- [Github Pages](https://pages.github.com/)
+    - This project uses Github pages to host the website.
+- [Lottie Animations](https://lottiefiles.com/)
+    - This project uses Lottie Animations to add simple animations to the website without sacrificing speed
+
 ## Credits
-- Genshin Impact
-- Lottie Animaton
 ### Gacha
 All artworks and images are from miHoYo and were taken from 
 
-https://genshin.mihoyo.com/en/home
+[Genshin Impact](https://genshin.mihoyo.com/en/home)
 
-https://genshin-impact.fandom.com/wiki/Genshin_Impact_Wiki
+[Genshin Impact Wiki](https://genshin-impact.fandom.com/wiki/Genshin_Impact_Wiki)
 
 ### Font
-Google Fonts 
-
-https://fonts.google.com/specimen/Noto+Serif+SC?preview.text=Genshin%20Impact%20B&preview.text_type=custom&sidebar.open=true&selection.family=Noto+Serif+SC:wght@500;900
+[Google Fonts](https://fonts.google.com/specimen/Noto+Serif+SC?preview.text=Genshin%20Impact%20B&preview.text_type=custom&sidebar.open=true&selection.family=Noto+Serif+SC:wght@500;900)
 
 ### Lottie
-https://lottiefiles.com/5040-shooting-star
+[Shooting Star Lottie](https://lottiefiles.com/5040-shooting-star)
 
-https://lottiefiles.com/22711-cross-button
+[Cross Button Lottie](https://lottiefiles.com/22711-cross-button)
 
-https://lottiefiles.com/890-loading-animation
+[Loading Animation Lottie](https://lottiefiles.com/890-loading-animation)
 
 ## Acknowledgement
+
+This project was inspired by Genshin Impact by MiHoYo.
